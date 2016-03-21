@@ -6,9 +6,10 @@ public class Solution {
         char[] letters = s.toCharArray();
         int num=0;
 
-        for(int i=0; i<n; i++){
+        int base=1;
+        for(int i=n-1; i>=0; i--, base*=ALPHABET){
             int d=letters[i]-'A'+1;
-            num+=d*(int)Math.pow(ALPHABET, n-1-i);
+            num+=d*base;
         }
 
         return num;
