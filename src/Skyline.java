@@ -67,9 +67,10 @@ public class Solution {
         }
         Collections.sort(height, (a,b) -> {
             if(a[0]!=b[0])
-                return a[0]-b[0];
+                return a[0]-b[0]; // the earlier the first to be processed
             else
-                return a[1]-b[1];
+                return a[1]-b[1]; // new building adding first, the taller the first;
+                                  // as of removal, remove the shorter building first;
         });
 
         Queue<Integer> pq  = new PriorityQueue<>((a,b) -> (b-a)); //max heap, pass in a reverse comparator
