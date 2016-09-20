@@ -51,3 +51,30 @@ public class Solution extends Reader4 {
         return count;
     }
 }
+
+// Forward declaration of the read4 API.
+int read4(char *buf);
+
+class Solution {
+public:
+    /**
+     * @param buf Destination buffer
+     * @param n   Maximum number of characters to read
+     * @return    The number of characters read
+     */
+    int read(char *buf, int n) {
+        int count=0;
+        int lastRead=0;
+
+        while(n>0){
+            lastRead = min(read4(buf), n);
+            buf += lastRead;
+            count += lastRead;
+            if (lastRead!=4)
+                break;
+            n-=lastRead;
+        }
+
+        return count;
+    }
+};
