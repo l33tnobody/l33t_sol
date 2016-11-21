@@ -10,17 +10,17 @@ public class Solution {
                     swap(A,i,j);
                     i--;
                 }
-            }    
+            }
         }
-        
+
         for(int k=0;k<n;k++){
             if(k+1!=A[k])
                 return k+1;
         }
-        
+
         return n+1;
     }
-    
+
     private void swap(int[] A, int i, int j){
         int temp=A[i];
         A[i]=A[j];
