@@ -1,7 +1,11 @@
 public class Solution {
+    private HashMap<String, List<Integer>> map = new HashMap<>();
+
     public List<Integer> diffWaysToCompute(String input) {
         List<Integer> res = new LinkedList<Integer>();
 // can cache here with a hashmap<String, List<Integer>>
+        if (map.containsKey(input)) return map.get(input);
+
         for(int i=0; i<input.length(); i++){
             char c = input.charAt(i);
             if (c == '+' || c == '-' || c == '*'){
@@ -34,7 +38,9 @@ public class Solution {
         if (res.size() == 0) { // a single number
             res.add(Integer.valueOf(input));
         }
-// else set or always set (for parsing numbers too)
+
+        map.put(input, res);
+
         return res;
     }
 }
