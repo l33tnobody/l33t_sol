@@ -11,14 +11,14 @@ public class MinStack {
 
     public void push(int x) {
         data.push(x);
-        if (min.isEmpty() || x<=min.peek())
+        if (min.isEmpty() || x<=min.peek()) // note: <= here
             min.push(x);
     }
 
     public void pop() {
         if (data.isEmpty()) return;
-        // cannot directly compare two Integer values with ==, have to convert one to int with intValue()
-        if (min.peek().intValue() == data.peek()) min.pop();
+
+        if (min.peek().equals(data.peek()) min.pop();
         data.pop();
     }
 
