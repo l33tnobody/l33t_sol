@@ -43,8 +43,10 @@ public class Solution {
 		result[0].add(new ArrayList<String>());
 
 		boolean[][] pair = new boolean[len][len];
+
 		for (int i = 0; i < s.length(); i++) {
 			result[i + 1] = new ArrayList<List<String>>();
+
 			for (int left = 0; left <= i; left++) {
 				if (s.charAt(left) == s.charAt(i) && (i-left <= 1 || pair[left + 1][i - 1])) {
 					pair[left][i] = true;
