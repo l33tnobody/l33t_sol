@@ -38,7 +38,7 @@ public class Solution {
                 ++i;++j;
                 continue;
             }
-            if (abbr.charAt(j) <= '0' || abbr.charAt(j) > '9') { // notice the number beginning with 0 should result in false
+            if (abbr.charAt(j) <= '0' || abbr.charAt(j) > '9') { // notice the number beginning with 0 should result in false including 0
                 return false;
             }
             int start = j;

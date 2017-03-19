@@ -7,8 +7,7 @@ class PeekingIterator implements Iterator<Integer> {
 	public PeekingIterator(Iterator<Integer> iterator) {
 	    // initialize any member here.
 	    it = iterator; // check null if you will
-	    if (it.hasNext())
-	        cache = it.next();  // one ahead
+	    if (it.hasNext()) cache = it.next();  // one ahead
 	}
 
     // Returns the next element in the iteration without advancing the iterator.
@@ -20,13 +19,13 @@ class PeekingIterator implements Iterator<Integer> {
 	// Override them if needed.
 	@Override
 	public Integer next() {
-	    Integer ret = cache;
+        Integer ret = cache;
 	    cache = it.hasNext() ? it.next() : null;
 	    return ret;
 	}
 
 	@Override
 	public boolean hasNext() {
-	    return cache == null? false : true;
+	    return cache != null;
 	}
 }

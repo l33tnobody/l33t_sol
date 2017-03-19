@@ -1,7 +1,5 @@
 public class Solution {
     public ArrayList<ArrayList<Integer>> permute(int[] num) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(num == null) return null;
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if(num.length==0) return res;
@@ -22,7 +20,7 @@ public class Solution {
             swap(num,s,i);
         }
     }
-    
+
     private void swap(Integer[]num, int i, int j){
         int temp=num[i];
         num[i]=num[j];

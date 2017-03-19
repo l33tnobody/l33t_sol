@@ -1,5 +1,3 @@
-// https://discuss.leetcode.com/topic/61457/c-bit-manipulation-dfs-solution/11
-
 class Solution {
     int n, cand, bn, minlen, minab;
     vector<int> dict;
@@ -30,10 +28,10 @@ class Solution {
         if (match) {
             minlen = len;
             minab = mask;
-        }
-        else
+        } else {
             for (int b = bit; b < bn; b <<= 1)
                 if (cand & b) dfs(b << 1, mask + b);
+        }
     }
 
 public:

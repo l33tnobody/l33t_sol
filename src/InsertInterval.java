@@ -8,26 +8,30 @@
  * }
  */
 public class Solution {
-    public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        List<Interval> res = new ArrayList<>();
+
+        int n = intervals.size();
+        Interval newint = new Interval(newInterval.start, newInterval.end); // don't change the input
         int i=0;
-        int n=intervals.size();
-        Interval newInt=new Interval(newInterval.start, newInterval.end);
-        ArrayList<Interval> res=new ArrayList<Interval>();
-        
-        for(;i<n && intervals.get(i).end<newInt.start; i++)
+
+        while(i<n && intervals.get(i).end < newint.start){
             res.add(intervals.get(i));
-        //merge
-        for(;i<n && newInt.end>=intervals.get(i).start;i++){
-            newInt.start=Math.min(intervals.get(i).start, newInt.start);
-            newInt.end=Math.max(intervals.get(i).end, newInt.end);
+            i++;
         }
-        res.add(newInt);
-        
-        for(;i<n;i++)
+
+        while(i<n && intervals.get(i).start <= newint.end) {
+            newint.start = Math.min(newint.start, intervals.get(i).start);
+            newint.end = Math.max(newint.end, intervals.get(i).end);
+            i++;
+        }
+        res.add(newint);
+
+        while(i<n) {
             res.add(intervals.get(i));
-            
+            i++;
+        }
+
         return res;
     }
 }
