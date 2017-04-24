@@ -1,15 +1,10 @@
 public class Solution {
     public boolean isValid(String s) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        int n=s.length();
-        if(n==0) return true;
         Stack<Character> st=new Stack<Character>();
-        
-        st.push(s.charAt(0));
-        for(int i=1;i<n;i++){
-            char c=s.charAt(i);
-            switch (c){
+
+        for(int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
+            switch (c) {
                 case ')':
                     if(!st.empty()&&st.peek()=='(')
                         st.pop();
@@ -36,12 +31,12 @@ public class Solution {
                     st.push(c);
             }
         }
-        
+
         if (!st.empty())    return false;
-        
+
         return true;
     }
-    
+
     private static int getLevel(char c){
         switch (c){
             case '(':
