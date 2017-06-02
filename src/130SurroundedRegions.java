@@ -41,3 +41,5 @@ public class Solution {
             dfsboundry(board, i, j+1, m, n);
     }
 }
+
+// a union find solution https://discuss.leetcode.com/topic/1944/solve-it-using-union-find
