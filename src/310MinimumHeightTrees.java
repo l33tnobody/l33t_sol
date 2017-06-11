@@ -8,8 +8,8 @@ public class Solution {
         }
         // return Collections.singletonList(0);
 
-        // assume no duplication in edges
         List<Set<Integer>> adj = new ArrayList<>(n);
+        // using hashset for easier removal of elements
         for (int i=0; i<n; i++) adj.add(new HashSet<Integer>());
 
         for (int[] edge : edges) {
@@ -75,7 +75,7 @@ public class Solution {
             int u = pair[0];
             int v = pair[1];
             e[u].add(v);
-            e[v].add(u); 
+            e[v].add(u);
         }
 
         int[] d1 = new int[n];
