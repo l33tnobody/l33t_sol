@@ -1,8 +1,8 @@
 public class Solution {
     public int maxProfit(int k, int[] prices) {
         int len = prices.length;
-        if (len<2 || k<=0)
-            return 0;
+        // if (len<2 || k<=0) // not needed
+            // return 0;
 
         // heap out of memory with leetcode jvm settings
         // ignore this
@@ -20,9 +20,9 @@ public class Solution {
 
         for (int j=0; j<len; j++){
             int cur_price = prices[j];
-            for(int i=k; i>=1; i--){
-                sell[i] = Math.max(sell[i], buy[i]+cur_price);
+            for(int i=k; i>=1; i--){ // reverse should yield correct result too
                 buy[i] = Math.max(buy[i], sell[i-1]-cur_price);
+                sell[i] = Math.max(sell[i], buy[i]+cur_price);
             }
         }
 
