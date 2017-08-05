@@ -1,31 +1,34 @@
+// Dictionary based solution
 public class Solution {
-    HashMap<String, List<String>> map = new HashMap<>();
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        return DFS(s, wordDict, new HashMap<String, List<String>>());
+    }
 
-    public List<String> wordBreak(String s, Set<String> wordDict) {
-        if(map.containsKey(s)) return map.get(s);
+    List<String> DFS(String s, List<String> wordDict, HashMap<String, List<String>>map) {
+        if (map.containsKey(s))
+            return map.get(s);
 
-        List<String> res = new ArrayList<>();
-
-        if(s.length()==0) {
+        List<String> res = new LinkedList<String>();
+        if (s.length() == 0) {
             res.add("");
             return res;
         }
-        for(int i=0; i<s.length(); i++){
-            String word = s.substring(i); // from i onward, inclusive.
-            if(wordDict.contains(word)){
-                String before = s.substring(0, i);
-                res.addAll(combine(wordBreak(before, wordDict), word));
-            }
-        }
-        map.put(s, res);
-        return res;
-    }
 
-    private List<String> combine(List<String> list, String word){
-        List<String> res = new ArrayList<>();
-        for(String s : list){
-            res.add( !s.equals("") ? s+" "+word : word );
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                List<String> sublist = DFS(s.substring(word.length()), wordDict, map); // can be empty if not able to break down.
+                for (String sub : sublist)
+                    res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+            }
+            // or:
+            // if (s.endsWith(word)) {
+            //     List<String> sublist = DFS(s.substring(0, s.length() - word.length()), wordDict, map); // can be empty if not able to break down.
+            //     for (String sub : sublist)
+            //         res.add(sub.isEmpty() ? word : sub + " " + word);
+            // }
         }
+
+        map.put(s, res);
         return res;
     }
 }
@@ -72,29 +75,27 @@ public class Solution {
     }
 }
 
+// dict based iterative dp:
+public class Solution {
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        int len = s.length();
 
-// Dictionary based solution
-public List<String> wordBreak(String s, Set<String> wordDict) {
-    return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
-}
-
-// DFS function returns an array including all substrings derived from s.
-List<String> DFS(String s, Set<String> wordDict, HashMap<String, LinkedList<String>>map) {
-    if (map.containsKey(s))
-        return map.get(s);
-
-    LinkedList<String>res = new LinkedList<String>();
-    if (s.length() == 0) {
-        res.add("");
-        return res;
-    }
-    for (String word : wordDict) {
-        if (s.startsWith(word)) {
-            List<String>sublist = DFS(s.substring(word.length()), wordDict, map);
-            for (String sub : sublist)
-                res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+        List<List<String>> results = new ArrayList<>(len+1);
+        for(int i=0; i<len+1; i++){
+            results.add(new ArrayList<String>());
         }
+        results.get(0).add(""); // result for an empty String s
+
+        for(int i=1; i<=len; i++) {
+            for(String word : wordDict) {
+                int j = i - word.length();
+                if (j >= 0 && results.get(j).size() != 0 && word.equals(s.substring(j+1-1, i-1+1))) {
+                    for(String str : results.get(j)) {
+                        results.get(i).add( (str=="") ? word : str + " " + word);
+                    }
+                }
+            }
+        }
+        return results.get(len);
     }
-    map.put(s, res);
-    return res;
 }

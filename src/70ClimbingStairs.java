@@ -1,8 +1,6 @@
 public class Solution {
     public int climbStairs(int n) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        if(n<=1)    return 1;
+        if(n<=1)    return 1; //1: 1 way, 0: 1 way
         int iMinus2=1;
         int iMinus1=1;
         int ires=0;

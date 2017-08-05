@@ -9,4 +9,16 @@ public class Solution {
 
         return Math.max(mem[nums.length][0], mem[nums.length][1]);
     }
+
+    // or using two vars is enough
+    // int exclude = 0, include = 0;
+    //
+    //     for(int k=0; k<nums.length; k++) {
+    //         int e = exclude, i = include;
+    //
+    //         exclude = Math.max(e, i);
+    //         include = nums[k] + e;
+    //     }
+    //
+    // return Math.max(exclude, include);
 }
