@@ -9,6 +9,7 @@ public class Solution {
                 dp[0][i+1] = true;
             }
         }
+        // first column but 0 is all false implied here
 
         for (int i = 0 ; i < s.length(); i++) {
             for (int j = 0; j < p.length(); j++) {

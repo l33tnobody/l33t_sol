@@ -2,9 +2,6 @@
 // which is using a "counting sort"
 public class Solution {
     public int maximalRectangle(char[][] matrix) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-
         if(matrix.length==0 || matrix[0].length==0)  return 0;
         int m=matrix.length;
         int n=matrix[0].length;

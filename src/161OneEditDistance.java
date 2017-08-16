@@ -18,7 +18,7 @@ public class Solution {
                 if (++diffcount>1) return false;
 
                 if (slen==tlen) { i++; j++;} // can only replace
-                else if (slen>tlen) {i++;}  // can only delete current one from s, or insert a blank to t
+                else if (slen>tlen) {i++;}  // can only delete current one from s, or insert a same char to t
                 else {j++;}
             }
         }
@@ -50,6 +50,9 @@ public class Solution {
                 else {j++;}
             }
         }
+        // equivalent
+        // if (i!=slen || j!=tlen)
+        //     diffcount += difflen; // return true // equivalent
 
         if (diffcount == 0)
             diffcount += difflen;
