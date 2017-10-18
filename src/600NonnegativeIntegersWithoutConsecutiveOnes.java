@@ -19,7 +19,7 @@ public class Solution {
             if (sb.charAt(i) == '1' && sb.charAt(i + 1) == '1') break; // greater ones must have consecutive 1s no more over count
             // '0', '1' greater ones '1', '1' no over count
             // '1', '0' greater ones '1', '1' no over count
-            if (sb.charAt(i) == '0' && sb.charAt(i + 1) == '0') result -= b[i];
+            if (sb.charAt(i) == '0' && sb.charAt(i + 1) == '0') result -= b[i]; // remove the senario of '1', '0', as for '0', '1', it depends on i + 2 is 0 or not, if yes, already extracted overcount
         }
 
         return result;

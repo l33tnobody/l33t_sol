@@ -4,7 +4,7 @@ public class Solution {
 
         int[] res = new int[nums.length - k + 1]; // number of max-es
 
-        Deque<Integer> dq = new ArrayDeque<>(); // to store indices that might be the max
+        Deque<Integer> dq = new ArrayDeque<>(); // to store indices that might be the max, key is to store indexes!
         for(int i=0; i<nums.length; i++) {
             if(!dq.isEmpty() && dq.peek() < i - k + 1) {
                 dq.poll();

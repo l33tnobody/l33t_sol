@@ -16,7 +16,7 @@ public class Solution {
                 int r = l + step;
                 // dp[l][r] is 0 in the beginning
                 for(int i=l+1; i<r; i++) {
-                    dp[l][r] = Math.max(dp[l][r], mynums[l]*mynums[i]*mynums[r] + dp[l][i] + dp[i][r]);
+                    dp[l][r] = Math.max(dp[l][r], mynums[l]*mynums[i]*mynums[r] + dp[l][i] + dp[i][r]); // by default step 1 val is 0
                 }
             }
         }
@@ -42,7 +42,7 @@ public class Solution {
     }
 
     public int burst(int[][] memo, int[] nums, int left, int right) {
-        if (left + 1 == right) return 0;
+        if (left + 1 >= right) return 0;
         if (memo[left][right] > 0) return memo[left][right];
         int ans = 0;
         for (int i = left + 1; i < right; ++i)
