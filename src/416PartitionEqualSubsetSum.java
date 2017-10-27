@@ -37,7 +37,7 @@ class Solution {
         int n = nums.length;
 
         boolean[] dp = new boolean[sum+1];
-        dp[0] = true; // for 0 numbers, all rest of sum numbers are false
+        dp[0] = true; // for 0 numbers, all rest of sum numbers are false by default
 
         for(int i=1; i<=n; i++) {
             for(int j=sum; j >= nums[i-1]; j--) { // dp[0] is always true, has to go from higher to lower due to preserving previous lower dp index to refer to
