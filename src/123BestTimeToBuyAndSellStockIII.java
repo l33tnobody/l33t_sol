@@ -14,30 +14,8 @@ public class Solution {
     }
 }
 
-// tracking buy and sell status:
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-        int states[2][4] = {INT_MIN, 0, INT_MIN, 0}; // 0: one buy no sell, 1: one buy one sell, 2: two buys one sell, 3, two buys two sells
-        int len = prices.size(), i, cur = 0, next =1;
-        for(i=0; i<len; ++i)
-        {
-            states[next][0] = max(states[cur][0], -prices[i]);
-            states[next][1] = max(states[cur][1], states[cur][0]+prices[i]);
-            states[next][2] = max(states[cur][2], states[cur][1]-prices[i]);
-            states[next][3] = max(states[cur][3], states[cur][2]+prices[i]);
-            swap(next, cur);
-        }
-        return max(states[cur][1], states[cur][3]);
-        // actually states[cur][3] which represents two buys and sells will always be >= states[cur][1]
-        // this is because all one buy and one sell can always be broken into two transactions
-        // two transactions max are a super set
-        // so equivalent to return states[cur][3];
-    }
-};
 
-
-
+// no, dont look at this solution, not generic enough
 // two transactions devided in one of the days
 public class Solution {
     public int maxProfit(int[] prices) {

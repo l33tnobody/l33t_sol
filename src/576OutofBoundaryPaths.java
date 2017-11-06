@@ -27,7 +27,7 @@ class Solution {
         long[][][] dp = new long[2][m][n]; // 0 step cannot move the ball out of bound, so all zero
 
         for (int k = 1; k <= N; k++) {
-            int kcur = k % 2;
+            int kcur = k % 2; // Or create a new array everytime to switch
             int kprev = (k - 1) % 2;
 
             for (int ii = 0; ii < m; ii++) {
