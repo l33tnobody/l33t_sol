@@ -15,6 +15,8 @@
  *     public List<NestedInteger> getList();
  * }
  */
+
+// note this will pay the cost of flatten as the caller goes but not pay all the flatten cost all at front.
 public class NestedIterator implements Iterator<Integer> {
     private Stack<NestedInteger> st;
 

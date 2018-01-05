@@ -116,7 +116,7 @@ public class Vector2D implements Iterator<Integer> {
     }
 
     public Integer next() {
-        hasNext();  // always try to push to next available list
+        hasNext();  // always try to push to next available list, optional
         return j.next();
     }
 
