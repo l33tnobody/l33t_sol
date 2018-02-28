@@ -1,3 +1,4 @@
+// can always push corresponding min to minstack
 public class MinStack {
 
     private Stack<Integer> data;
