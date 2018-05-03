@@ -2,9 +2,8 @@ public class Solution {
     private HashMap<String, List<Integer>> map = new HashMap<>();
 
     public List<Integer> diffWaysToCompute(String input) {
-        List<Integer> res = new LinkedList<Integer>();
-// can cache here with a hashmap<String, List<Integer>>
         if (map.containsKey(input)) return map.get(input);
+        List<Integer> res = new LinkedList<>();
 
         for(int i=0; i<input.length(); i++){
             char c = input.charAt(i);

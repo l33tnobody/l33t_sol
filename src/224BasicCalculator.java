@@ -2,7 +2,7 @@
 public class Solution {
     public int calculate(String s) {
         int res=0, val=0, sign=1;
-        Stack<Integer> st = new Stack<Integer>(); //sign stack
+        Stack<Integer> st = new Stack<>(); //sign stack
         st.push(sign);
         for(int i=0; i<s.length(); i++){
             char c = s.charAt(i);
