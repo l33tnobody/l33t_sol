@@ -11,11 +11,9 @@
  */
 public class Solution {
     public ListNode partition(ListNode head, int x) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         ListNode cur=head;
         ListNode h1=null, h2=null, p1=null, p2=null;
-        
+
         while(cur!=null){
             if(cur.val<x){
                 if(h1==null)    {h1=cur; p1=cur;}
@@ -27,11 +25,11 @@ public class Solution {
             }
             cur=cur.next;
         }
-        
+
         if(h2!=null)    p2.next=null;
-        
+
         if(h1!=null)    {p1.next=h2; return h1;}
         else    return h2;
-               
+
     }
 }

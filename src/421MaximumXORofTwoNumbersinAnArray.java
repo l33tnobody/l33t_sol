@@ -1,3 +1,5 @@
+// greedy: test from the highest bit
+
 class Solution {
     public int findMaximumXOR(int[] nums) {
         int max = 0, mask = 0;

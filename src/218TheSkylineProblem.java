@@ -1,52 +1,50 @@
 // devide and conquer: detailed explanation:
 // http://www.geeksforgeeks.org/divide-and-conquer-set-7-the-skyline-problem/
-public class Solution {
+class Solution {
     public List<int[]> getSkyline(int[][] buildings) {
-        return recurSkyline(buildings, 0, buildings.length-1);
+        if(buildings.length == 0) return new LinkedList<int[]>();
+
+        return recurSkyline(buildings, 0, buildings.length - 1);
     }
 
     private LinkedList<int[]> recurSkyline(int[][] buildings, int p, int q) {
-        if (p>q){
-            return new LinkedList<int[]>();
-        }
-        if (p==q){
+        if (p == q) {
             LinkedList<int[]> res = new LinkedList<int[]>();
             res.add(new int[] {buildings[p][0], buildings[p][2]});
             res.add(new int[] {buildings[p][1], 0});
             return res;
         }
-        else { // if (p<q){
-            int mid=(p+q)/2;
-            return merge(recurSkyline(buildings, p, mid),
-                         recurSkyline(buildings, mid+1, q));
-        }
+
+        int mid = p + (q - p) / 2;
+        return merge(recurSkyline(buildings, p, mid), recurSkyline(buildings, mid + 1, q));
     }
 
-    private LinkedList<int[]> merge(LinkedList<int[]> l1, LinkedList<int[]> l2){
-        LinkedList<int[]> res = new LinkedList<int[]>();
-        int h1=0, h2=0;
-        while(l1.size()>0 && l2.size()>0){
-            int x=0, h=0;
-            if (l1.getFirst()[0]<l2.getFirst()[0]){
-                x=l1.getFirst()[0];
-                h1=l1.getFirst()[1];
-                h=Math.max(h1,h2);
+    private LinkedList<int[]> merge(LinkedList<int[]> l1, LinkedList<int[]> l2) {
+        LinkedList<int[]> res = new LinkedList<>();
+        int h1 = 0, h2 = 0;
+        while(l1.size() > 0 && l2.size() > 0){
+            int x = 0, h = 0;
+            if (l1.getFirst()[0] < l2.getFirst()[0]){
+                x = l1.getFirst()[0];
+                h1 = l1.getFirst()[1];
+                h = Math.max(h1, h2);
                 l1.removeFirst();
-            } else if (l1.getFirst()[0]>l2.getFirst()[0]){
-                x=l2.getFirst()[0];
-                h2=l2.getFirst()[1];
-                h=Math.max(h1,h2);
+            } else if (l1.getFirst()[0] > l2.getFirst()[0]){
+                x = l2.getFirst()[0];
+                h2 = l2.getFirst()[1];
+                h = Math.max(h1, h2);
                 l2.removeFirst();
             } else { //x1==x2
-                x=l1.getFirst()[0];
-                h1=l1.getFirst()[1];
-                h2=l2.getFirst()[1];
-                h=Math.max(h1,h2);
+                x = l1.getFirst()[0];
+                h1 = l1.getFirst()[1];
+                h2 = l2.getFirst()[1];
+                h = Math.max(h1, h2);
                 l1.removeFirst();
                 l2.removeFirst();
             }
-            if (res.size()==0 || res.getLast()[1]!=h){ //add only when height change
-                res.add(new int[] {x,h});
+
+            if (res.size() == 0 || res.getLast()[1] != h){ //add only when height change
+                res.add(new int[]{ x, h });
             }
         }
         res.addAll(l1);
@@ -54,6 +52,9 @@ public class Solution {
         return res;
     }
 }
+
+
+
 
 //priority queue, max heap:
 
