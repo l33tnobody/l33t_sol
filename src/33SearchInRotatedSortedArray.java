@@ -1,15 +1,13 @@
-public class Solution {
-    public int search(int[] A, int target) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        int n=A.length;
+class Solution {
+    public int search(int[] nums, int target) {
+        int n=nums.length;
         int l=0,r=n-1;
         while(l<=r){
             int m=(l+r)/2;
-            if(A[m]==target) return m;
-            
-            if(A[l]<=A[m]){
-                if(target>=A[l]&&target<A[m]){
+            if(nums[m]==target) return m;
+
+            if(nums[l]<=nums[m]){
+                if(target>=nums[l]&&target<nums[m]){
                     r=m-1;
                     continue;
                 }else{
@@ -17,7 +15,7 @@ public class Solution {
                     continue;
                 }
             }else{  //right half is sorted
-                if(target>A[m]&&target<=A[r]){
+                if(target>nums[m]&&target<=nums[r]){
                     l=m+1;
                     continue;
                 }else{

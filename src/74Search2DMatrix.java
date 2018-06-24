@@ -1,9 +1,10 @@
 public class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         int rows=matrix.length;
+        if(rows == 0) return false;
         int cols=matrix[0].length;
+        if(cols == 0) return false;
+
         int l=0, r=rows*cols-1;
         while(l<=r){
             int mid=(l+r)/2;

@@ -1,5 +1,5 @@
 public class Solution {
-    int maxVal = Integer.MIN_VALUE; // int maxVal = 0; // what I think it rather should be, since no path == 0
+    int maxVal = Integer.MIN_VALUE; 
 
     public int maxPathSum(TreeNode root) {
         maxPathDown(root);
