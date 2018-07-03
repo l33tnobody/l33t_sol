@@ -1,6 +1,8 @@
 // follow up question: store total count or left count in the treenode:
 //     https://leetcode.com/discuss/43464/what-if-you-could-modify-the-bst-nodes-structure
-//     https://leetcode.com/discuss/61293/complexity-left-subtree-node-count-into-treenode-structure
+// If we could add a count field in the BST node class, 
+// it will take O(n) time when we calculate the count value for the whole tree, 
+// but after that, it will take O(logn) time when insert/delete a node or calculate the kth smallest element.
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         TreeNodeWithCount rootWithCount = buildTreeWithCount(root);
