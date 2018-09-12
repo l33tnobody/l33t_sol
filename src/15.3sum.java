@@ -1,4 +1,4 @@
-public class Solution {
+class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res=new ArrayList<>();
 
@@ -9,10 +9,10 @@ public class Solution {
             int k = nums.length - 1;
 
             while(j < k) {
-                if(nums[j] + nums[k] > -nums[i]) {
+                if(nums[i] + nums[j] + nums[k] > 0) {
                     k--;
                     continue;
-                } else if( nums[j] + nums[k] < -nums[i]) {
+                } else if( nums[i] + nums[j] + nums[k] < 0) {
                     j++;
                     continue;
                 }
