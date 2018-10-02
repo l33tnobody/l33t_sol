@@ -7,9 +7,7 @@ public class Solution {
             if(b[i] == false) {
                 count++;
                 for(int j=2*i; j<n; j+=i) {
-                // or for(int j=2; j*i<n; j++) {
                     b[j] = true;
-                // or b[j*i] = true;
                 }
             }
         }

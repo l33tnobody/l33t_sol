@@ -36,3 +36,27 @@ public class Solution {
         return -1;
     }
 }
+
+// or simply:
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        int len = s.length();
+        if (len<10)
+            return new ArrayList<String>();
+        
+        Set<String> seen = new HashSet<>();
+        Set<String> res = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<s.length(); i++) {
+            sb.append(s.charAt(i));
+            if(i<9) continue;
+            
+            String cand = sb.toString();
+            if(!seen.contains(cand)) seen.add(cand);
+            else res.add(cand);
+            sb.deleteCharAt(0);
+        }
+        
+        return new ArrayList(res);
+    }
+}

@@ -1,7 +1,7 @@
 // https://discuss.leetcode.com/topic/40657/150-ms-45-lines-java-solution
 // Another way to avoid duplicates is to use Set<List<Integer>> ret = new HashSet<>();
 // and return new ArrayList<>(ret);
-
+// time O(nk^2)
 public class Solution {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> ret = new ArrayList<>();
@@ -25,7 +25,9 @@ public class Solution {
 
                  if (isPalindrome(str2)) {
                      String str1rvs = new StringBuilder(str1).reverse().toString();
-                     if (map.containsKey(str1rvs) && map.get(str1rvs) != i && str2.length() != 0) {
+                     // str2.length() != 0 is for dedupping, think of ab and ba both exist in the list. 
+                     // however if the completing string length is shorter, there is no such dup case, so only happens when on str2.length() == 0
+                     if (map.containsKey(str1rvs) && map.get(str1rvs) != i && str2.length() != 0) { 
                          List<Integer> list = new ArrayList<Integer>();
                          list.add(i);
                          list.add(map.get(str1rvs));

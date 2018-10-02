@@ -1,4 +1,4 @@
-// Array Based, O(n) time and space
+// Bucket Sort, Array Based, O(n) time and space
 public class Solution {
     public List<Integer> topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -41,7 +41,7 @@ public class Solution {
             list.add(entry);
         }
 
-        quickSelect(list, k); // this will partial sort the list all the bigger ones to the left
+        quickSelect(list, k); // this will partial sort the list with all the bigger ones to the left
         List<Integer> res = new ArrayList<>();
         for(int i=0; i<k; i++) {
             res.add(list.get(i).getKey());
@@ -51,7 +51,7 @@ public class Solution {
     }
 
     private void quickSelect(List<Map.Entry<Integer, Integer>> list, int k) {
-        int l=0, i=0, r=list.size()-1;
+        int l=0, r=list.size()-1;
         while(l<r) {
             int j = partition(list, l, r);
             if(j<k) {
@@ -88,7 +88,8 @@ public class Solution {
 }
 
 
-// based on heap nlgn time, O(n) space
+// based on heap nlogn time, O(n) space
+// or after getting all the frequency, use a min heap on the frequency of size k: time (n+k)logk, space n+k
 public class Solution {
     public List<Integer> topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -107,5 +108,18 @@ public class Solution {
             res.add(maxHeap.poll().getKey());
         }
         return res;
+
+        // better: min heap
+        // PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) -> a.getValue()-b.getValue());
+        // for(Map.Entry<Integer, Integer> entry : counterMap.entrySet()) {
+        //     pq.offer(entry);
+        //     if(pq.size() > k) pq.poll();
+        // }
+        
+        // List<Integer> res = new LinkedList<>();
+        // while(!pq.isEmpty()) {
+        //     res.add(0, pq.poll().getKey());
+        // }
+        // return res;
     }
 }

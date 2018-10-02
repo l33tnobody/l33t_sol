@@ -18,7 +18,7 @@ public class LRUCache {
     public LRUCache(int capacity) {
         this.capacity = capacity;
         count = 0;
-        map = new HashMap<>(capacity+1); // overflow one more, see set() method
+        map = new HashMap<>(capacity+1); // overflow one more, see put() method
         head = new Node(-1, -1);
         tail = new Node(-1, -1);
         head.pre = null;
@@ -35,7 +35,7 @@ public class LRUCache {
         return node.value;
     }
 
-    public void set(int key, int value) {
+    public void put(int key, int value) {
         Node node = map.get(key);
         if (node != null) {
             node.value = value;
@@ -75,5 +75,7 @@ public class LRUCache {
     private void removeNode(Node node) {
         node.pre.next = node.next;
         node.next.pre = node.pre;
+        node.next = null;
+        node.pre = null;
     }
 }

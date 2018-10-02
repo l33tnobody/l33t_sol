@@ -1,4 +1,3 @@
-
 // n^2 time, will time out
 public class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {

@@ -6,64 +6,58 @@
  *     RandomListNode(int x) { this.label = x; }
  * };
  */
-
-// recursive solution will stackoverflow on one test case
+// O(n) additional space except from the result
 public class Solution {
-    HashMap<Integer, RandomListNode> map = new HashMap<>();
-
     public RandomListNode copyRandomList(RandomListNode head) {
-        return clone(head);
-    }
-
-    private RandomListNode clone(RandomListNode node){
-        if (node==null) return null;
-
-        if (map.containsKey(node.label)) return map.get(node.label);
-
-        RandomListNode copy = new RandomListNode(node.label);
-        map.put(node.label, copy);
-
-        copy.next = clone(node.next);
-        copy.random = clone(node.random);
-
-        return copy;
+        Map<RandomListNode, RandomListNode> map = new HashMap<>();
+        
+        RandomListNode ptr = head;
+        while(ptr != null) { // make copy and find mapping
+            RandomListNode copy = new RandomListNode(ptr.label);
+            map.put(ptr, copy);
+            ptr = ptr.next;
+        }
+        
+        ptr = head;
+        while(ptr != null) {
+            RandomListNode copy = map.get(ptr);
+            copy.next = map.get(ptr.next); // ptr.next == null ? null : map.get(ptr.next); 
+            copy.random = map.get(ptr.random); // ptr.random == null ? null : map.get(ptr.random);
+            ptr = ptr.next;
+        }
+        
+        return map.get(head); // map.get(null) returns null
     }
 }
 
-
-// Iterative Solution
+// O(1) additional space except from the result
 public class Solution {
-    HashMap<Integer, RandomListNode> map = new HashMap<>();
-
     public RandomListNode copyRandomList(RandomListNode head) {
-        if (head == null) return null;
-
-        RandomListNode newHead = new RandomListNode(head.label);
-        map.put(head.label, newHead);
-
-        LinkedList<RandomListNode> q = new LinkedList<>();
-        q.add(head);
-
-        while(!q.isEmpty()) {
-            RandomListNode n = q.pop();
-            RandomListNode ncopy = map.get(n.label);
-
-            if (n.next != null && !map.containsKey(n.next.label)) {
-                RandomListNode nextcopy = new RandomListNode(n.next.label);
-                map.put(n.next.label, nextcopy);
-                q.add(n.next);
-            }
-            ncopy.next = (n.next == null) ? null : map.get(n.next.label);
-
-            // can extract to a common helper function
-            if (n.random != null && !map.containsKey(n.random.label)){
-                RandomListNode randomcopy = new RandomListNode(n.random.label);
-                map.put(n.random.label, randomcopy);
-                q.add(n.random);
-            }
-            ncopy.random = (n.random == null) ? null : map.get(n.random.label);
+        RandomListNode ptr = head;
+        while(ptr != null) { // copy and make mappings
+            RandomListNode copy = new RandomListNode(ptr.label);
+            copy.next = ptr.next;
+            ptr.next = copy;
+            ptr = ptr.next.next;
         }
-
-        return newHead;
+        
+        //assign random pointer according to mapping
+        ptr = head;
+        while(ptr != null) {
+            RandomListNode copy = ptr.next;
+            copy.random = ptr.random == null ? null : ptr.random.next;
+            ptr = ptr.next.next;
+        }
+        
+        RandomListNode copyhead = head == null? null : head.next;
+        ptr = head;
+        while(ptr != null) {
+            RandomListNode copy = ptr.next, next = copy.next;
+            copy.next = next == null ? null : next.next;
+            ptr.next = next;
+            ptr = ptr.next;
+        }
+        
+        return copyhead;
     }
 }
