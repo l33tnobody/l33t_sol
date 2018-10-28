@@ -9,17 +9,34 @@
 
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        int sum = 0;
-        int res = 0;
-        Map<Integer, Integer> presum = new HashMap<>(); // map from a presum value to how many of such presum
-
-        presum.put(0, 1); // start with 0 as sum, count 1
-        for(int i=0; i<nums.length; i++) {
-            sum += nums[i];
-            if(presum.containsKey(sum-k)) { res += presum.get(sum-k); }
-            presum.put(sum, presum.getOrDefault(sum, 0) + 1);
+        int res = 0, sum = 0;
+        Map<Integer, Integer> m = new HashMap<>(); // map from a cumulative sum (or presum) value to how many of such sum
+        
+        m.put(0, 1); // start with 0 as sum, count 1
+        for(int n : nums) {
+            sum += n;
+            if(m.containsKey(sum - k)) res += m.get(sum-k);
+            m.put(sum, m.getOrDefault(sum, 0) + 1);
         }
-
+        
         return res;
+    }
+}
+
+// time n*n space n solution:
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int count = 0;
+        int n = nums.length;
+        
+        for(int s=0; s<n; s++) {
+            int sum = 0;
+            for(int e=s; e<n; e++) {
+                sum += nums[e];
+                if(sum == k) count++;
+            }
+        }
+        
+        return count;
     }
 }

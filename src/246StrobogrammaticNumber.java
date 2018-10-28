@@ -1,20 +1,3 @@
-public class Solution {
-    public boolean isStrobogrammatic(String num) {
-
-        for(int i = 0, j = num.length() - 1; i <= j; i++, j--) {
-            char a = num.charAt(i);
-            char b = num.charAt(j);
-
-            if (a == b && (b == '0' || b == '1' || b == '8')) continue;
-            if ((a == '6' && b == '9') || (a == '9' && b == '6')) continue;
-
-            return false;
-        }
-
-        return true;
-    }
-}
-
 // using map
 public class Solution {
     public boolean isStrobogrammatic(String num) {

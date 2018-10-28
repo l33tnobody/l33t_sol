@@ -4,7 +4,7 @@ public class Solution {
         Map<Integer, Integer> map = new HashMap<>(); // distance to number of pairs
 
         for(int i=0; i<points.length; i++) { // for every mid point
-            for(int j=0; j<points.length; j++) { // distance to all other points, self does not count, since it could be infinite numebr of points as the point itself
+            for(int j=0; j<points.length; j++) { // distance to all other points
                 if (j==i) continue;
 
                 int d = getDist(points[i], points[j]);
