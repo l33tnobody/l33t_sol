@@ -1,3 +1,5 @@
+// backtracking
+// similar: 842SplitArrayIntoFibonacciSequence
 public class Solution {
     public List<String> addOperators(String num, int target) {
         List<String> res = new ArrayList<>();

@@ -45,3 +45,24 @@ public class Solution {
         return res;
     }
 }
+// or:
+class Solution {
+    public String longestPalindrome(String s) {
+        String res = "";
+        int len = s.length();
+        boolean[][] map = new boolean[len][len];
+
+        for(int l=0; l<len; l++) {
+            for(int i=0; i+l<len; i++) {
+                int j=i+l; 
+                if (s.charAt(i) == s.charAt(j) && (l <= 2 || map[i+1][j-1])) {
+                    map[i][j] = true;
+                    
+                    if(l + 1 > res.length()) res = s.substring(i, j+1);
+                }
+            }
+        }
+
+        return res;
+    }
+}
