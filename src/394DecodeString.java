@@ -8,7 +8,7 @@ class Solution {
 
         for(int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
-            if (Character.isLowerCase(c)) {
+            if (Character.isLetter(c)) {
                 pre += c;
             } else if (Character.isDigit(c)) {
                 multi *= 10;

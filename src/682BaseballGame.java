@@ -1,7 +1,7 @@
 class Solution {
     public int calPoints(String[] ops) {
         int sum = 0;
-        List<Integer> list = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
         for (String op : ops) {
             int score = 0;
             int n = list.size();

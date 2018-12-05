@@ -1,4 +1,5 @@
 // greedy one pass:
+// use track min so far
 public class Solution {
     public int maxProfit(int[] prices) {
         int profit = 0;

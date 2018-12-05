@@ -2,7 +2,7 @@
 public class Solution {
     public int maxProfit(int[] prices) {
         int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
-        int sell1 = 0, sell2 = 0;
+        int sell1 = 0, sell2 = 0; // can do no transactions
         for(int i:prices){                              // Assume we only have 0 money at first
             // the order here can be reversed
             buy1 = Math.max(buy1, -i);          // The maximum if we've just buy  1st stock so far.

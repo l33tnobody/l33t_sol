@@ -1,3 +1,6 @@
+// better solution more straightforward:
+// the question actually means only one action is allowed in one day.
+
 // https://discuss.leetcode.com/topic/30680/share-my-dp-solution-by-state-machine-thinking/2
 
 // transition:
@@ -25,6 +28,7 @@ public class Solution {
         return Math.max(s0, s2); // s1 after buy cannot be the largest，assume price non-negative
     }
 }
+
 
 
 

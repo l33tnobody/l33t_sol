@@ -1,3 +1,4 @@
+// the key is to go from right to left and using a stack to record all chars and select when there is (X?)
 public class Solution {
     public String parseTernary(String expression) {
         if (expression == null || expression.length() == 0) return "";

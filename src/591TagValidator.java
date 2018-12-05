@@ -1,6 +1,9 @@
 class Solution {
     public boolean isValid(String code) {
         Stack<String> stack = new Stack<>();
+        //bullet proof
+        code = code.trim();
+        if(code.length() == 1) return false;
 
         for(int i=0; i<code.length();) {
             if(i > 0 && stack.isEmpty()) return false; // check single outer-most wrapped tag

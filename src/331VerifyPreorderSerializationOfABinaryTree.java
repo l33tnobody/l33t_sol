@@ -1,9 +1,11 @@
+// in and out degree, sum >=0, at the end sum = 0
+
 class Solution {
     public boolean isValidSerialization(String preorder) {
         String[] nodes = preorder.split(",");
         // indegree -, outdegree +, in the end the sum should be 0,
-        // and the sum is non-negative at all time
-        int diff = 1; // imagine root has indegree of 1
+        // and the sum is non-negative at all time in preorder
+        int diff = 1;
 
         for(String n : nodes) {
             diff--; // every node has 1 indegree
@@ -14,6 +16,3 @@ class Solution {
         return diff == 0;
     }
 }
-
-// stack solution not very straightforward
-// https://discuss.leetcode.com/topic/35973/java-intuitive-22ms-solution-with-stack

@@ -53,6 +53,7 @@ public class Solution {
 // pre-order traversal is root-left-right, and post order is left-right-root.
 // modify the code for pre-order to make it root-right-left,
 // and then reverse the output so that we can get left-right-root .
+/*
 public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res=new ArrayList<>();
@@ -72,6 +73,7 @@ public class Solution {
         return res;
     }
 }
+*/
 
 // recursive
 public class Solution {
