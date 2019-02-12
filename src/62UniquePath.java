@@ -12,6 +12,20 @@ public class Solution {
     }
 }
 
+// mem optimized
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
+                dp[j + 1] = dp[j + 1] + dp[j];
+            }
+        }
+        return dp[n];
+    }
+}
+
 public class Solution {
     public int uniquePaths(int m, int n) {
         //m-1+n-1 pick m-1 = m+n-2 ! / (m-1 ! * n-1 !)

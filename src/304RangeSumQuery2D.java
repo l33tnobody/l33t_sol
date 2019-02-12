@@ -5,7 +5,7 @@ public class NumMatrix {
     public NumMatrix(int[][] matrix) {
         if (matrix==null || matrix.length==0 || matrix[0].length==0)
             return;
-        dp = new int[matrix.length + 1][matrix[0].length + 1];
+        dp = new int[matrix.length + 1][matrix[0].length + 1]; // padding
         for (int r=0; r<matrix.length; r++){
             for (int c=0; c<matrix[0].length; c++){
                 dp[r+1][c+1] = dp[r][c+1] + dp[r+1][c] + matrix[r][c] - dp[r][c];

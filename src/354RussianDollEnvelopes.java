@@ -1,4 +1,5 @@
 // dp: n^2, easy to remember
+// sort on one dimention and then compare both dimentions
 class Solution {
     public int maxEnvelopes(int[][] envelopes) {
         Arrays.sort(envelopes, new Comparator<int[]>(){ //java 8: Arrays.sort(envelopes, (a, b) -> a[0] - b[0]);

@@ -1,3 +1,4 @@
+// similar to 312 burst balloons
 // dp with steps
 public class Solution {
     // strategy: https://discuss.leetcode.com/topic/68252/clarification-on-the-problem-description-problem-description-need-to-be-updated

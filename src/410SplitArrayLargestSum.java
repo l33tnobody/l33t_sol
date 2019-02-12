@@ -1,3 +1,5 @@
+// easier to understand than dp,
+// dp see solution
 class Solution {
     public int splitArray(int[] nums, int m) {
         int max = 0; long sum = 0;

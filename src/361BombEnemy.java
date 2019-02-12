@@ -1,3 +1,5 @@
+// use rowhit and colhit cache to minimize runtime to O(mn), each grid cell is counted once in cache
+// brute force would be O(mn*(m+n))
 class Solution {
     public int maxKilledEnemies(char[][] grid) {
         int m = grid.length;

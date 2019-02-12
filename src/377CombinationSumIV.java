@@ -1,3 +1,8 @@
+// dynamic programming: when duplicate combinations allowed, dp is better than back tracking:
+// [1, 2] is different than [2, 1]
+
+// if negative numbers allowed then, there can be infinite number of combinations
+//     condition needs to be added: each number can only be used once
 // recursive:
 public class Solution {
     public int combinationSum4(int[] nums, int target) {

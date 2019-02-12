@@ -20,6 +20,25 @@
 //
 // The problem is asking for numbers from 0 to 10^n. Hence return f(1) + f(2) + .. + f(n)
 
+class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if(n == 0) return 1;
+
+        //n = 1
+        int res = 10;
+        // starting from n=2
+        int d0 = 9; // first digits 1-9 9 choices
+        int available_digits = 9;
+
+        for(int i=2; i<=n && available_digits>0; i++, available_digits--) {
+            d0 *= available_digits;
+            res += d0;
+        }
+
+        return res;
+    }
+}
+
 public class Solution {
     public int countNumbersWithUniqueDigits(int n) {
         if (n == 0)     return 1;

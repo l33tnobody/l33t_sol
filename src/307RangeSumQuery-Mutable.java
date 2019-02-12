@@ -1,3 +1,4 @@
+// segment tree
 public class NumArray {
 
     class SegmentTreeNode {

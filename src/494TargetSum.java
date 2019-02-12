@@ -44,13 +44,31 @@ class Solution {
     }
 
     public int subsetSum(int[] nums, int s) {
-        int[] dp = new int[s + 1];
-        dp[0] = 1; // starting with no nums, 0 has one way to get, else positive numbers got 0 way
 
-        for (int n : nums)
-             for (int i = s; i >= n; i--)
-                dp[i] += dp[i - n];
+        int n = nums.length;
+        int[][] dp = new int[n + 1][s + 1];
+        dp[0][0] = 1;
 
-        return dp[s];
+        // dp[0][a positive number] is by default 0
+        for (int i=1; i<=n; i++) {
+            for (int j = 0; j <= s; j++) {
+                dp[i][j] += dp[i-1][j];
+                if(nums[i-1] <= j) {
+                    dp[i][j] += dp[i-1][j - nums[i-1]];
+                }
+            }
+        }
+
+        return dp[n][s];
+
+        // reduced space edition:
+        // int[] dp = new int[s + 1];
+        // dp[0] = 1; // starting with no nums, 0 has one way to get, else positive numbers got 0 way
+
+        // for (int n : nums)
+        //      for (int i = s; i >= n; i--)
+        //         dp[i] += dp[i - n];
+
+        // return dp[s];
     }
 }

@@ -30,6 +30,8 @@ class Solution {
 
 
 
+
+
 // not as good as the first one
 // or an simpler solution with some confusion on the when the fee would apply
 class Solution {

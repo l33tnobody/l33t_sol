@@ -4,9 +4,9 @@ class Solution {
 
         for (int i = 2; i <= n; i++) {
             dp[i] = i;
-            for (int j = i-1; j > 1; j--) {
-                if (i % j == 0) {
-                    dp[i] = dp[j] + (i/j); // with no knowledge of all equally small (least): dp[i] = Math.min(dp[i], dp[j] + (i/j));
+            for (int j = i-1; j > 1; j--) { // larger the divider, less steps needed
+                if (i % j == 0) { // must be largest divider, optimal result guaranteed
+                    dp[i] = dp[j] + (i/j); // if with no knowledge of all equally small (least): dp[i] = Math.min(dp[i], dp[j] + (i/j));
                     break;                 // no break
                 }
             }
@@ -16,7 +16,9 @@ class Solution {
     }
 }
 
-// better:
+
+
+// for fun: better, but probably cannot think of this
 class Solution {
     public int minSteps(int n) {
         int res = 0;

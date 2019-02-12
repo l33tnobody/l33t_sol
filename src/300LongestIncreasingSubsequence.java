@@ -8,7 +8,7 @@ public class Solution {
         Arrays.fill(dp, 1);
         int res=1;
 
-        for(int i=1; i<len; i++){ // where the current increasing sequence ends
+        for(int i=1; i<len; i++) { // where the current increasing sequence ends
             for(int j=0; j<i; j++){
                 if(nums[i]>nums[j])
                     // dp[i] records the longest sequence ends AT i

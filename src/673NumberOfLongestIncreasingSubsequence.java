@@ -1,8 +1,8 @@
 class Solution {
     public int findNumberOfLIS(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n];
-        int[] count = new int[n];
+        int[] dp = new int[n]; // longest ending in i
+        int[] count = new int[n]; // how many longest ending in i
         int maxlen = 0, res = 0;
 
         for(int i=0; i<n; i++) {

@@ -1,3 +1,5 @@
+// back tracing is better than dp in this case where the question requires
+// no duplicate combinations such as [1, 2], [2, 1]
 public class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();

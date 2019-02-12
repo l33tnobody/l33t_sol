@@ -3,7 +3,7 @@ public class Solution {
         int maxlen=0;
         int last=-1;
 
-        Stack<Integer> lefts=new Stack<Integer>();
+        Stack<Integer> lefts = new Stack<>(); // stack for indexes of '('
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='(')    lefts.push(i);
             else {  //')'

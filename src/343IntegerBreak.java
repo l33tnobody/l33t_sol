@@ -16,6 +16,8 @@ public class Solution {
     }
 }
 
+
+
 public class Solution {
     public int integerBreak(int n) {
         // https://discuss.leetcode.com/topic/43055/why-factor-2-or-3-the-math-behind-this-problem

@@ -5,15 +5,15 @@ class Solution {
         int sum = 0, maxlen=0;
         Map<Integer, Integer> map = new HashMap<>(); // from sum to its earliest index
         map.put(0, -1);
-        
+
         for(int i = 0; i < nums.length; i++) {
             sum += nums[i];
 
             if (map.containsKey(sum-k)) {
-                maxlen = Math.max(maxlen, i - map.get(sum-k)); 
+                maxlen = Math.max(maxlen, i - map.get(sum-k));
             }
 
-            if (!map.containsKey(sum)) map.put(sum, i);
+        if (!map.containsKey(sum)) map.put(sum, i); // make sure do not overwrite bigger index of same sum, to guarantee longest
         }
 
         return maxlen;

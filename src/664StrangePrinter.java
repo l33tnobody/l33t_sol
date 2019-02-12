@@ -6,13 +6,13 @@ class Solution {
         int[][] dp = new int[n][n];
         for (int i = 0; i < n; i++) dp[i][i] = 1;
 
-        for(int step=1; step <= n-1; step++) {
+        for(int step=1; step <= n-1; step++) { // step dp problem
             for(int i=0; i+step<n; i++) {
                 int j = i + step;
                 dp[i][j] = step + 1; // max times needed
-                for(int k = i+1; k <=j; k++) {
+                for(int k = i+1; k <=j; k++) { // divide into two non-empty sub-problems
                     int res = dp[i][k-1] + dp[k][j];
-                    if(s.charAt(i) == s.charAt(k)) res--; // e.g. "aab"
+                    if(s.charAt(i) == s.charAt(k)) res--; // e.g. "aab" or “aba”
                     dp[i][j] = Math.min(dp[i][j], res);
                 }
             }

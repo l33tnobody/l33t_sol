@@ -9,7 +9,7 @@ T +----------+
 . |0         |
 i |0         |
 
-S[x] == T[y] ?
+T[x] == S[y] ?
 no:  mem[i+1][j+1] = mem[i+1][j]
 yes: mem[i+1][j+1] = mem[i+1][j] + mem[i][j]
 */

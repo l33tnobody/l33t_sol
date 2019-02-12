@@ -1,3 +1,5 @@
+// back tracing is better than dp in this case where the question requires
+// no duplicate combinations like [2,2,3], [3,2,2]. [2,3,2]
 public class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();

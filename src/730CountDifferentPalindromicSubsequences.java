@@ -4,9 +4,9 @@ class Solution {
         int n = S.length();
         int[][][] dp = new int[4][n][n]; // defined as the palindrome that ends on the char 0..4 a..a, b..b, etc
         int mod = 1000000007;
-        
+
         char[] chs = S.toCharArray();
-        
+
         for(int distance = 0; distance < n; distance++) {
             for(int i = 0; i + distance < n; i++) {
                 int j = i + distance;
@@ -33,7 +33,7 @@ class Solution {
                 }
             }
         }
-        
+
         int res = 0;
         for (int k = 0; k < 4; ++k) {
           res += dp[k][0][n-1];
@@ -43,6 +43,9 @@ class Solution {
     }
 }
 
+
+
+// not recommended:
 // O(n^3) due to the low and high search
 // can be optimized using an array next[4][len] and prev[4][len] for each char (a, b, c, d) to make it O(1) and
 // turn the overall time complexity down to O(n^2)
@@ -51,7 +54,7 @@ class Solution {
         int len = S.length();
         int[][] dp = new int[len][len];
         int mod = 1000000007;
-        
+
         char[] chs = S.toCharArray();
         for(int i = 0; i < len; i++) dp[i][i] = 1;
 
@@ -63,7 +66,7 @@ class Solution {
                     int high = j - 1;
                     while(low <= high && chs[low] != chs[j]) low++; // O(n) here
                     while(low <= high && chs[high] != chs[j]) high--;
-                    
+
                     if(low > high) {
                         // consider the string from i to j is "a...a" "a...a"... where there is no character 'a' in between
                         dp[i][j] = dp[i + 1][j - 1] * 2 + 2; // aa and a
@@ -72,16 +75,16 @@ class Solution {
                         dp[i][j] = dp[i + 1][j - 1]  * 2 + 1; // aa since a in the middle has already been counted
                     } else { // low < high
                         // consider the string from i to j is "a...a...a...a" where there are at least two character 'a' in between
-                        dp[i][j] = dp[i + 1][j - 1] * 2 - dp[low + 1][high - 1]; 
+                        dp[i][j] = dp[i + 1][j - 1] * 2 - dp[low + 1][high - 1];
                     }
-                    
+
                 } else { // chs[i] != chs[j] no addition
                     dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
                 }
                 dp[i][j] = dp[i][j] < 0 ? dp[i][j] + mod : dp[i][j] % mod;
             }
         }
-        
+
         return dp[0][len - 1];
     }
 }

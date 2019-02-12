@@ -1,4 +1,5 @@
-// a brute force way:
+// similar as any string subsequence algo
+// a brute force way: O(length of s1*n1)
 class Solution {
     public int getMaxRepetitions(String s1, int n1, String s2, int n2) {
         char[] array1 = s1.toCharArray(), array2 = s2.toCharArray();

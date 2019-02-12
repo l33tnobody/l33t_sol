@@ -1,3 +1,4 @@
+// recursive dp with cache easier than doing the bottom up approach with arrays
 class Solution {
     public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
         Map<List<Integer>, Integer> dp = new HashMap<>();
@@ -10,28 +11,27 @@ class Solution {
         if(sum == 0) return 0;
 
         if(dp.containsKey(needs)) return dp.get(needs);
-        int res = Integer.MAX_VALUE;
+
+        int res = 0;
+        // in case no valid special can be used, or specials do not save money:
+        // bottomline:
+        for(int i=0; i<needs.size(); i++) {
+            res += needs.get(i) * price.get(i);
+        }
 
         for(List<Integer> s : special) {
             List<Integer> needsCopy = new ArrayList<>(needs);
-            boolean valid = true;
-            for(int i=0; i<needs.size(); i++) {
+            int i = 0;
+            for(; i<needs.size(); i++) {
                 int remain = needs.get(i) - s.get(i);
                 if(remain < 0) {
-                    valid = false;
                     break;
                 }
                 needsCopy.set(i, remain);
             }
-            if(valid) res = Math.min(res, s.get(needs.size()) + dfs(price, special, needsCopy, dp));
+            if(i == needs.size()) res = Math.min(res, s.get(needs.size()) + dfs(price, special, needsCopy, dp));
         }
 
-        // in case no valid special can be used, or specials do not save money:
-        int noSpecial = 0;
-        for(int i=0; i<needs.size(); i++) {
-            noSpecial += needs.get(i) * price.get(i);
-        }
-        res = Math.min(res, noSpecial);
         dp.put(needs, res);
         return res;
     }

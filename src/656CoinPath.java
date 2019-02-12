@@ -3,7 +3,7 @@ class Solution {
         int n = A.length;
         int[] c = new int[n]; // cost
         int[] p = new int[n]; // previous index
-        int[] l = new int[n]; // length: the longer the better
+        int[] l = new int[n]; // length of the optimal path: the longer the better (lexicographically smaller)
         Arrays.fill(c, Integer.MAX_VALUE);
         Arrays.fill(p, -1);
         c[0] = A[0]; // can assign 0 here but to reflect the real cost add the first cost in

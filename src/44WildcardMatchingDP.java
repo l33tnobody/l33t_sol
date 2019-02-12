@@ -19,7 +19,7 @@ public class Solution {
             	if (wp[j-1] == '?' || ws[i-1] == wp[j-1])
             		dp[i][j] = dp[i-1][j-1];
             	else if (wp[j-1] == '*')
-            		dp[i][j] = dp[i-1][j] || dp[i][j-1];
+            		dp[i][j] = dp[i-1][j] || dp[i][j-1]; // match once or more than once OR match 0 times
             }
         }
 

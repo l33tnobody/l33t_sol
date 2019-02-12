@@ -1,6 +1,8 @@
+// solve with DFS and make faster and easier by using the symmetric attribute
 class Solution {
     public int numberOfPatterns(int m, int n) {
         // Skip array represents number to jump between two pairs
+        // 0 means the two numbers are adjacent, neighbors ( even if not really e.g. 1 <=> 8 )
         int skip[][] = new int[10][10];
         skip[1][3] = skip[3][1] = 2;
         skip[1][7] = skip[7][1] = 4;
@@ -12,9 +14,9 @@ class Solution {
         int rst = 0;
 
         for(int i = m; i <= n; i++) {
-            rst += DFS(vis, skip, 1, i - 1) * 4;    // 1, 3, 7, 9 are symmetric
-            rst += DFS(vis, skip, 2, i - 1) * 4;    // 2, 4, 6, 8 are symmetric
-            rst += DFS(vis, skip, 5, i - 1);        // 5
+            rst += DFS(vis, skip, 1, i) * 4;    // 1, 3, 7, 9 are symmetric
+            rst += DFS(vis, skip, 2, i) * 4;    // 2, 4, 6, 8 are symmetric
+            rst += DFS(vis, skip, 5, i);        // 5
         }
 
         return rst;
@@ -23,8 +25,7 @@ class Solution {
     // cur: the current position
     // remain: the steps remaining
     int DFS(boolean vis[], int[][] skip, int cur, int remain) {
-        if(remain < 0) return 0;
-        if(remain == 0) return 1;
+        if(remain == 1) return 1;
         vis[cur] = true;
         int rst = 0;
         for(int i = 1; i <= 9; ++i) {

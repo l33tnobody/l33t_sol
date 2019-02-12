@@ -1,4 +1,5 @@
 // trace back from bottom right corner and calculate "need"
+// note: does not work from top left  down right with this logic
 public class Solution {
     public int calculateMinimumHP(int[][] dungeon) {
         int m = dungeon.length;

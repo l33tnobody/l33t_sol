@@ -1,4 +1,4 @@
-// The question meaning: find a substring which "contains" the longest palindromic sequence
+// sub problem is max of from to, step from small to large
 public class Solution {
     public int longestPalindromeSubseq(String s) {
         if (s.equals("")) return 0;
@@ -24,6 +24,10 @@ public class Solution {
         return mem[0][n-1];
     }
 }
+
+
+
+
 
 public class Solution {
     public int longestPalindromeSubseq(String s) {

@@ -1,24 +1,7 @@
 // rare, see less
-class Solution {
-    public int findMinMoves(int[] machines) {
-        int total = 0;
-        for(int i : machines) total += i;
-        if(total % machines.length != 0) return -1;
-
-        int avg = total/machines.length, cnt = 0, max = 0;
-        for(int load: machines){
-            cnt += load - avg; //load-avg is single "gain/lose"
-            max = Math.max(Math.max(max, Math.abs(cnt)),  load-avg); // no Math.abs here: can simultaneously take from left and right but not give
-        }
-
-        return max;
-    }
-}
-
-// one caveat: one machine can take 2 at the same time but not give 2 at the same time from/to both left and right
+// better to understand:
+// one caveat: one machine can take 2 at the same time but not give 2 at the same time from/to both left and right: only give to one way
 // OJ says [3, 0, 3] requires 1 step only, meaning 0 in the middle can take 2 from left and right at the same time.
-// This explains the correct solutions do not take absolute values for some to avoid over counting in case the machine will need to take from both left and right sides.
-
 // https://discuss.leetcode.com/topic/80059/easy-understand-solution-o-n-time-and-o-1-space/2
 class Solution {
     public int findMinMoves(int[] machines) {
@@ -37,6 +20,23 @@ class Solution {
         }
 
         return res;
+    }
+}
+
+// concise
+class Solution {
+    public int findMinMoves(int[] machines) {
+        int total = 0;
+        for(int i : machines) total += i;
+        if(total % machines.length != 0) return -1;
+
+        int avg = total/machines.length, cnt = 0, max = 0;
+        for(int load: machines){
+            cnt += load - avg; //load-avg is single "gain/lose"
+            max = Math.max(Math.max(max, Math.abs(cnt)),  load-avg); // cannot give two both left and right at the same time
+        }
+
+        return max;
     }
 }
 
