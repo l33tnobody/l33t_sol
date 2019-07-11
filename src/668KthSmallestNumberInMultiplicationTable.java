@@ -11,7 +11,7 @@ class Solution {
             else high = mid;
         }
 
-        return high; // low also works?
+        return high;
     }
 
     private int count(int m, int n, int val) { // check how many <= v

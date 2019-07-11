@@ -1,9 +1,9 @@
 public class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int rows=matrix.length;
-        if(rows == 0) return false;
+        if(rows == 0) return false; // no need
         int cols=matrix[0].length;
-        if(cols == 0) return false;
+        if(cols == 0) return false; // no need
 
         int l=0, r=rows*cols-1;
         while(l<=r){

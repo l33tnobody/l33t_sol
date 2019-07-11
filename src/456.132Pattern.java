@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/132-pattern/discuss/94077/Java-O(n)-solution-using-stack-in-detail-explanation
+// instead of n^3 algo
 class Solution {
     class Pair{
         int min, max;

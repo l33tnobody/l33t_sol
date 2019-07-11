@@ -74,7 +74,7 @@ public class Solution {
     }
 }
 
-// binary search: O(nlogn)
+// binary search: O((n+m)logn)
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> set = new HashSet<>();

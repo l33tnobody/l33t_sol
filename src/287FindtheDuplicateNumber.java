@@ -1,4 +1,4 @@
-// binary search solution
+// binary search solution O(nlogn)
 public class Solution {
     public int findDuplicate(int[] nums) {
         int n = nums.length-1;
@@ -17,6 +17,11 @@ public class Solution {
         return l;
     }
 }
+
+
+
+
+
 
 // slow fast pointers solution
 public class Solution {

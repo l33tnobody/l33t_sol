@@ -1,4 +1,4 @@
-// iterative binary search
+// iterative binary search: compare mid1 and mid1+1
 public class Solution {
     public int findPeakElement(int[] nums) {
         int l=0;

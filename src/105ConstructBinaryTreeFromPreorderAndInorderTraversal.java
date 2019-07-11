@@ -1,3 +1,4 @@
+// nlogn time
 public class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return helper(0, 0, inorder.length-1, preorder, inorder);
@@ -8,10 +9,11 @@ public class Solution {
 
         int rootval = preorder[prestart];
         TreeNode root = new TreeNode(rootval);
-        int inrootidx = 0;
+        int inrootidx = -1;
         for(int i=instart; i<=inend; i++) {
             if(inorder[i] == rootval) {
                 inrootidx = i;
+                break;
             }
         }
         root.left = helper(prestart+1, instart, inrootidx-1, preorder, inorder);

@@ -1,10 +1,10 @@
+// Boundry count:
 // the key is to use a BST keyed on time, add and remove event, in order traversal would be
 // the same as traversal ascendingly based on time. this can help save some time from insert of O(n) to O(logn)
 
 // This is to find the maximum number of concurrent ongoing event at any time.
 // We can log the start & end of each event on the timeline, each start add a new ongoing event at that time, each end terminate an ongoing event. Then we can scan the timeline to figure out the maximum number of ongoing event at any time.
 // The most intuitive data structure for timeline would be array, but the time spot we have could be very sparse, so we can use sorted map to simulate the timeline to save space.
-
 // O(n)
 class MyCalendarThree {
     private Map<Integer, Integer> timeline; // from timepoint to how many events
@@ -84,7 +84,10 @@ class MyCalendarThree {
     }
 }
 
+
 // segment tree: O(logn + log(len)) just for fun
+// booked is actually lazy eval, not required. Just get the max of left and right,
+// it is a max segment tree
 class SegmentTreeNode{
     int start;
     int end;

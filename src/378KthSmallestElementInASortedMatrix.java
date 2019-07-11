@@ -39,7 +39,7 @@ class Solution {
     private int higherKey(int[] row, int val) {
         int n = row.length;
         // if(row[n-1] <= val) return n;
-        
+
         int l = 0, h = n; // h = n-1;
         while(l < h) {
             int mid = l + (h - l) / 2;

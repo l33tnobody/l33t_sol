@@ -67,12 +67,12 @@ public class Solution {
 
     private int rightmost(char[][] image, int min, int max, boolean horizontal) {
         int l = min, r = max;
-        while (l < r) {
-            int mid = l + (r - l) / 2 + 1; // notice the +1 here
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
             if (!hasBlack(image, mid, horizontal)) {
                 r = mid - 1;
             } else {
-                l = mid;
+                l = mid + 1;
             }
         }
         return r;

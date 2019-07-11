@@ -25,7 +25,7 @@ public class Solution {
             set.add(curr);
 
             if (i>=k)
-                set.remove(nums[i-k]); // if there are dup numbers in the set, it should have returned true earlier on line 9
+                set.remove(nums[i-k]); // if there are dup numbers in the set, it should have returned true earlier on line 9, due to 0 difference
         }
         return false;
     }

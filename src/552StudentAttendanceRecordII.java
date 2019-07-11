@@ -1,3 +1,4 @@
+// dp: gradually relaxing the constraints with at most how many As and at most how many trailing Ls
 class Solution {
     public int checkRecord(int n) {
         final int MOD = 1000000007;

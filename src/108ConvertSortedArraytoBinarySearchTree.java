@@ -10,7 +10,6 @@
 public class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
         int len=nums.length;
-        if(len==0) return null;
 
         return helper(nums, 0, len-1);
     }

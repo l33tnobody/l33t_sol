@@ -37,6 +37,18 @@ class Solution {
 }
 
 
+// segment tree is a great fit for this question:
+// optimization technics for segment tree:
+// coordinates compression: lower space used and speedup query updates
+// lazy propagation on updates for speeding up range updates
+// https://leetcode.com/problems/falling-squares/discuss/112678/Treemap-solution-and-Segment-tree-(Java)-solution-with-lazy-propagation-and-coordinates-compression
+// nlogn time, n space
+int h = tree.query(L, R) + pos[1];tree.update(L,R,h);best=Math.max(best,h);
+
+
+
+
+
 // not very straightforward Treemap solution: nlogn assuming k overlapping average
 class Solution {
     public List<Integer> fallingSquares(int[][] positions) {
@@ -82,11 +94,3 @@ class Solution {
     }
 }
 
-// segment tree is a great fit for this question:
-// optimization technics for segment tree:
-// coordinates compression: lower space used and speedup query updates
-// lazy propagation on updates for speeding up range updates
-// https://leetcode.com/problems/falling-squares/discuss/112678/Treemap-solution-and-Segment-tree-(Java)-solution-with-lazy-propagation-and-coordinates-compression
-int h = tree.query(L, R) + pos[1];
-tree.update(L, R, h);
-best = Math.max(best, h);

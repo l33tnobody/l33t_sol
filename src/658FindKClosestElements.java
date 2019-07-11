@@ -9,7 +9,7 @@ class Solution {
             if(i < 0) res.add(arr[j++]);
             else if (j >= arr.length) res.add(0, arr[i--]);
             else {
-                // both i, j exists pick closer one, 
+                // both i, j exists pick closer one,
                 // note, x >= arr[i] and true for smaller i, and arr[j] >= x and true for bigger j
                 // so no Math.abs is needed
                 if(x - arr[i] <= arr[j] - x) res.add(0, arr[i--]);
@@ -17,21 +17,34 @@ class Solution {
             }
             k--;
         }
-        return res;    
+        return res;
     }
-    
-    // similar to Collections.binarySearch(arr, x), except from always returning insertion point in non-negative index
-    // for reference: https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/util/Collections.java
+
+    // this bsearch is actually Ceiling function, same as "inseartion point as the below one"
     private int bsearch(int[] arr, int x) {
-        int l = 0, h = arr.length - 1;
-        while(l <= h) {
+        int l = 0, h = arr.length;
+        while (l < h) {
             int mid = l + (h - l) / 2;
-            if(arr[mid] == x) return mid;
-            if(arr[mid] > x) h = mid - 1;
-            else l = mid + 1;
+            if (arr[mid] < x)
+                l = mid + 1;
+            else
+                h = mid;
         }
-        return l; // no exact match, return insertion point, range from 0 to arr.length
+        return h;
     }
+
+    // // similar to Collections.binarySearch(arr, x), except from always returning insertion point in non-negative index
+    // // for reference: https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/util/Collections.java
+    // private int bsearch(int[] arr, int x) {
+    //     int l = 0, h = arr.length - 1;
+    //     while(l <= h) {
+    //         int mid = l + (h - l) / 2;
+    //         if(arr[mid] == x) return mid;
+    //         if(arr[mid] > x) h = mid - 1;
+    //         else l = mid + 1;
+    //     }
+    //     return l; // no exact match, return insertion point, range from 0 to arr.length
+    // }
 }
 
 // see k numbers as one number, and use binary search to find where it starts:

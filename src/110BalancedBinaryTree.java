@@ -7,6 +7,8 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+// recursively return height and checking
 public class Solution {
     public boolean isBalanced(TreeNode root){
         return check(root) != -1;

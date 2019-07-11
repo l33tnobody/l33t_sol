@@ -1,28 +1,10 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+// slow and fast pointers
 public class Solution {
     public TreeNode sortedListToBST(ListNode head) {
-        if (head==null) return null;
-
         return bst(head, null);
     }
 
-    private TreeNode bst(ListNode head, ListNode tail){
+    private TreeNode bst(ListNode head, ListNode tail){ // meaning not including tail but will include head
         if (head==tail) return null;
 
         ListNode slow = head;

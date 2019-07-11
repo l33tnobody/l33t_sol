@@ -9,7 +9,7 @@ class Solution {
                 String substr = s.substring(i, j+1);
                 dp[i][j] = substr; // no compression at first
 
-                if(l < 4) { // substring cannot be shortened
+                if(l < 4) { // substring cannot be shortened, l == len - 1
                     continue;
                 }
 

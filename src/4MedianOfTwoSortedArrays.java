@@ -20,7 +20,7 @@ class Solution {
         // make sure m <= n
         if(m > n) return findMedianSortedArrays(nums2, nums1);
 
-        int imin = 0, imax = m, half_len = (m+n)/2;
+        int imin = 0, imax = m, half_len = (m+n)/2; // imin: min number of elements can be put in left for m, imax: max number of the same.
 
         while(imin <= imax) {
             int i = (imin + imax) / 2;
@@ -34,9 +34,9 @@ class Solution {
                 if(i == m) min_of_right = nums2[j];
                 else if(j == n) min_of_right = nums1[i];
                 else min_of_right = Math.min(nums1[i], nums2[j]);
-                
+
                 if((m+n) % 2 == 1) return min_of_right;
-                
+
                 int max_of_left = 0;
                 if(i == 0) max_of_left = nums2[j-1];
                 else if (j == 0) max_of_left = nums1[i-1];

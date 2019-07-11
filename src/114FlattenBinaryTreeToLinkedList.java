@@ -1,41 +1,35 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-public class Solution {
-    private TreeNode cur = null;
+// preorder traversal
+class Solution {
+    TreeNode cur = null;
 
     public void flatten(TreeNode root) {
         cur = root;
-        flattenHelper(root);
+        h(root);
     }
 
-    private void flattenHelper(TreeNode root) {
-        if (root == null) return;
-        TreeNode left = root.left;
-        TreeNode right = root.right;
+    private void h(TreeNode root) {
+        if (root == null)
+            return;
+
+        TreeNode l = root.left;
+        TreeNode r = root.right;
+
         cur.left = null;
-
-        if (left!=null) {
-            cur.right = left;
+        if (l != null) {
+            cur.right = l;
             cur = cur.right;
+            h(cur);
         }
-        flattenHelper(left);
 
-        if (right!=null) {
-            cur.right = right;
+        if (r != null) {
+            cur.right = r;
             cur = cur.right;
+            h(cur);
         }
-        flattenHelper(right);
     }
 }
 
-// reverse pre-order
+// reverse pre-order: nice
 public class Solution {
     private TreeNode prev = null;
 
@@ -50,6 +44,36 @@ public class Solution {
     }
 }
 
+// FYI using a stack:
+public class Solution {
+    public void flatten(TreeNode root) {
+        if (root == null)
+            return;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        stk.push(root);
+        while (!stk.isEmpty()) {
+            TreeNode curr = stk.pop();
+            if (curr.right != null)
+                stk.push(curr.right);
+            if (curr.left != null)
+                stk.push(curr.left);
+            if (!stk.isEmpty())
+                curr.right = stk.peek();
+            curr.left = null;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
 // Iterative one:
 public void flatten(TreeNode root) {
     while(root != null) {
@@ -62,25 +86,5 @@ public void flatten(TreeNode root) {
             root.left = null;
         }
         root = root.right;
-    }
-}
-
-
-// FYI using a stack:
-public class Solution {
-    public void flatten(TreeNode root) {
-        if (root == null) return;
-        Stack<TreeNode> stk = new Stack<TreeNode>();
-        stk.push(root);
-        while (!stk.isEmpty()){
-            TreeNode curr = stk.pop();
-            if (curr.right!=null)
-                 stk.push(curr.right);
-            if (curr.left!=null)
-                 stk.push(curr.left);
-            if (!stk.isEmpty())
-                 curr.right = stk.peek();
-            curr.left = null;
-        }
     }
 }

@@ -1,5 +1,6 @@
 // mergesort based solution better!
 // sort on indexes to keep track of the reversecount
+// nlogn
 class Solution {
     public List<Integer> countSmaller(int[] nums) {
         List<Integer> res = new ArrayList<Integer>();
@@ -36,6 +37,8 @@ class Solution {
         for(int k = 0; k < p; k++) indexes[start+k] = tmp[k];
     }
 }
+
+
 
 
 // has no duplicate node with same value:

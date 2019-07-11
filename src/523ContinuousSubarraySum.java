@@ -1,10 +1,9 @@
-// worst cast can do i start from 0 to n-2 and j start from i+1 to n-1 and %: O(n)
-
-// An O(n) solution: using the fact that sum added with a multiple, the remainder does not change
+// brute force: O(n^2) try every subarray
+// An O(n) solution: using the fact that when sum added with a multiple, the remainder does not change
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>(); // remainder to index
-        map.put(0, -1);
+        map.put(0, -1); // sum 0, mod 0 to begin with at index -1
 
         int sum = 0;
         for(int i=0; i<nums.length; i++) {
@@ -13,6 +12,7 @@ class Solution {
             Integer prev = map.get(sum);
             if(prev != null ) {
                 if (i - prev >= 2) return true;
+                // otherwise no set again for this remainder to get longest possible subarray
             } else {
                 map.put(sum, i);
             }

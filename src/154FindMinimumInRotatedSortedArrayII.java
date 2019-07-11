@@ -9,7 +9,7 @@ public class Solution {
                 r = mid;
             else if (nums[mid]>nums[r])
                 l = mid+1;
-            else // nums[mid] == nums[r]
+            else // nums[mid] == nums[r] not sure right side is sorted or not, but safe to move the r to left by one
                 r--;    // r will not be the only min one so disgard r move to the left
         }
         return nums[l];

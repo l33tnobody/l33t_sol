@@ -20,6 +20,30 @@ class Solution {
     }
 }
 
+// bfs with a single queue:
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int d = 0;
+        
+        while(q.size() > 0) {
+            d++;
+            for(int sz = q.size(); sz > 0; sz--) {
+                TreeNode tn = q.poll();
+                if(tn.left != null)   q.add(tn.left);
+                if(tn.right != null)  q.add(tn.right);
+            }
+        }
+        
+        return d;
+    }
+}
+
+
+
 // bfs:
 public class Solution {
     public int maxDepth(TreeNode root) {
@@ -39,28 +63,6 @@ public class Solution {
             }
             
             q = newq;
-        }
-        
-        return d;
-    }
-}
-
-// bfs with a single queue:
-class Solution {
-    public int maxDepth(TreeNode root) {
-        if(root == null) return 0;
-        
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        int d = 0;
-        
-        while(q.size() > 0) {
-            d++;
-            for(int sz = q.size(); sz > 0; sz--) {
-                TreeNode tn = q.poll();
-                if(tn.left != null)   q.add(tn.left);
-                if(tn.right != null)  q.add(tn.right);
-            }
         }
         
         return d;

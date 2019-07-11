@@ -1,3 +1,5 @@
+// Segment Tree on 4 sub areas: 4 children
+// range sum query and update both: log4(mn)
 public class NumMatrix {
 
     class TreeNode {

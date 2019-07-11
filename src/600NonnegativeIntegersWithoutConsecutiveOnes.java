@@ -6,8 +6,8 @@ public class Solution {
         StringBuilder sb = new StringBuilder(Integer.toBinaryString(num)).reverse();
         int n = sb.length();
 
-        int a[] = new int[n];
-        int b[] = new int[n];
+        int a[] = new int[n]; // ends with 0
+        int b[] = new int[n]; // ends with 1
         a[0] = b[0] = 1;
         for (int i = 1; i < n; i++) {
             a[i] = a[i - 1] + b[i - 1];

@@ -29,7 +29,7 @@ class Solution {
             map.get(curr).add(i); // will be sorted indexes
         }
 
-        int prev = -1;  //index of previous character in s
+        int prev = -1;  //index in t of the previous character in s matching
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 

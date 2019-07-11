@@ -40,6 +40,7 @@ class Solution {
 }
 
 
+
 // nvm for this solution
 // using the input as the stack, similar to above
 public class Solution {

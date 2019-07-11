@@ -1,3 +1,4 @@
+// For fun:
 // Set and kadane n^3logn; if m is min(row, col) and n is max(row, col):
 // runtime: m^2*n*logn
 class Solution {

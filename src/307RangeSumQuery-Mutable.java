@@ -1,4 +1,5 @@
 // segment tree
+// both logn time for update and query, n time for build
 public class NumArray {
 
     class SegmentTreeNode {
@@ -68,6 +69,8 @@ public class NumArray {
 
     }
 }
+
+
 
 // another Binary Indexed Tree solution:
 // https://discuss.leetcode.com/topic/31599/java-using-binary-indexed-tree-with-clear-explanation

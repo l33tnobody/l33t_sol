@@ -1,4 +1,5 @@
-// dfs
+// dfs with adjacency list (to easily traverse to neighbors) and visited array to track visit
+// and a count to identify the groups
 public class Solution {
     public int findCircleNum(int[][] M) {
         int n = M.length;

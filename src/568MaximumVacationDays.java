@@ -44,7 +44,7 @@ class Solution {
         for(int i=0; i<K; i++) {
             int[] temp = new int[N];
             Arrays.fill(temp, Integer.MIN_VALUE); // cannot reach each cities at first, penalty
-
+            // N*N for dense matrix while using adjacency list ArrayList<List<Integer>> for sparse matrix
             for(int j=0; j<N; j++) { // for each destination cities
                 for(int k=0; k<N; k++) { // for each origin cities
                     if (flights[k][j] == 1 || k == j) { // k==j meaning one can stay at the current city

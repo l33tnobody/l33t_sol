@@ -22,7 +22,7 @@ class Solution {
                 String multistr = makeString(pre, multiSt.pop());
                 pre = preSt.pop();
                 pre += multistr;
-                multi = 0;
+                // multi = 0; // not needed
             }
         }
 

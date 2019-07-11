@@ -1,3 +1,4 @@
+// O(logn*logn)
 public class Solution {
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
@@ -18,6 +19,8 @@ public class Solution {
         return h;
     }
 }
+
+
 
 // equivalent iterative solution
 public class Solution {

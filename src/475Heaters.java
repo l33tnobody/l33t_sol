@@ -1,8 +1,8 @@
 // O(nlogn) + O(mlogn) given m houses and n heaters
 class Solution {
     public int findRadius(int[] houses, int[] heaters) {
-        Arrays.sort(heaters); // find a house among two closest heaters
-        int res = Integer.MIN_VALUE;
+        Arrays.sort(heaters); // find a house among two closest heaters, has to sort heaters
+        int res = Integer.MIN_VALUE; // or 0
 
         for(int h : houses) {
             // int index = Arrays.binarySearch(heaters, h); // or use the given binarysearch function

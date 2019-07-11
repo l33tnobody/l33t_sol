@@ -11,7 +11,7 @@ class Solution {
         for (int i = 0; i < m; i++)
             for (char c : stickers[i].toCharArray()) mp[i][c-'a']++;
         dp.put("", 0);
-        return helper(dp, mp, target);
+        return helper(dp, mp, target); // can check if target has char which non of the stickers has, if so return -1. (might be faster)
     }
 
     private int helper(Map<String, Integer> dp, int[][] mp, String target) {

@@ -7,6 +7,7 @@ public class Solution {
             long temp=0;
             temp += valid(s, i, 1, pre1);
             temp += valid(s, i, 2, pre0);
+            // temp = mod(temp); // optional for the test cases
             pre0=pre1;
             pre1=temp;
         }

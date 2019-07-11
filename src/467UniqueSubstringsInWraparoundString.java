@@ -1,3 +1,4 @@
+// O(n) time and constant space solution, instead of O(n^2) time dp step from 1 to n-1 and O(n^2) space
 class Solution {
     public int findSubstringInWraproundString(String p) {
         // count[i] is the maximum unique substring end with ith letter.

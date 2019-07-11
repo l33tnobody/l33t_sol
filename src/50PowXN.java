@@ -1,6 +1,6 @@
 public class Solution {
     public double pow(double x, int n) {
-        long longn=(long) n; // prevent Integer.MIN_VALUE from overflow
+        long longn=(long) n; // prevent Integer.MIN_VALUE from overflow (fun fact: -1*Integer.MIN_VALUE == Integer.MIN_VALUE)
         if(x==0){
             if(longn==0) return 1;
             return 0;
