@@ -6,6 +6,31 @@
  *     TreeLinkNode(int x) { val = x; }
  * }
  */
+// best level by level BFS same as this question in Version I
+ class Solution {
+    public Node connect(Node root) {
+        if (root == null)
+            return null;
+
+        List<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node n = q.remove(0);
+                if (i != size - 1)
+                    n.next = q.get(0); // else the last one's next in this level would be null
+                if (n.left != null)
+                    q.add(n.left);
+                if (n.right != null)
+                    q.add(n.right);
+            }
+        }
+
+        return root;
+    }
+}
 
  // use a dummy head: simplify code and run faster
  public class Solution {

@@ -17,7 +17,7 @@ class Solution {
         if(root == null) return -1;
 
         int h = 1 + Math.max(height(root.left, res), height(root.right, res));
-        if(res.size() < h + 1) res.add(new ArrayList<Integer>());
+        if(res.size() < h + 1) res.add(new ArrayList<Integer>()); // or get root height first and init the res beforehand
         res.get(h).add(root.val);
         // root.left = null; root.right = null; // optional: remove the children
         return h;

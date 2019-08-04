@@ -11,7 +11,7 @@ class Solution {
         //     if(n > target) return false; // optimization: if one number is greater than average then, there is no possible partition
         return canPartition(nums, k, visited, 0, 0, sum/k);
     }
-
+    // cur is the starting index:
     private boolean canPartition(int[] nums, int k, boolean[] visited, int cur, int cursum, int target) {
         if (k == 1) return true;
         if (cursum == target) return canPartition(nums, k - 1, visited, 0, 0, target);

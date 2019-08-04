@@ -61,28 +61,31 @@ public class Solution {
 public class Solution {
     public int countComponents(int n, int[][] edges) {
         List<List<Integer>> adj = new ArrayList<>();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
         boolean[] visited = new boolean[n];
         int count = 0;
 
-        for(int[] e : edges) {
+        for (int[] e : edges) {
             adj.get(e[0]).add(e[1]);
             adj.get(e[1]).add(e[0]);
         }
 
-        for(int i=0; i<n; i++) {
-            if(visited[i]) continue;
+        for (int i = 0; i < n; i++) {
+            if (visited[i])
+                continue;
             count++;
             Queue<Integer> q = new LinkedList<>();
             q.offer(i);
-            while(!q.isEmpty()) {
+            visited[i] = true; // in stack or already processed
+            while (!q.isEmpty()) {
                 int h = q.poll();
-                visited[h] = true;
-                for(int j : adj.get(h)) {
-                    if(visited[j]) continue;
+                for (int j : adj.get(h)) {
+                    if (visited[j])
+                        continue;
                     q.offer(j);
+                    visited[j] = true;
                 }
             }
         }

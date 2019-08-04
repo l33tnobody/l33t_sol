@@ -1,84 +1,129 @@
 public class Solution {
-    // connected but no circle, edges = n - 1
+    // connected but no circle, edges = n - 1 necessary, but n - 1 edges might have circle
+    // so next is to detect circle with UF
     public boolean validTree(int n, int[][] edges) {
+        if (edges.length != n - 1)
+            return false;
+
         int[] parent = new int[n];
-        Arrays.fill(parent, -1);
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
 
         // make sure there is no global cycle
-        for(int[] e : edges) {
+        for (int[] e : edges) {
             int x = find(parent, e[0]);
             int y = find(parent, e[1]);
 
-            if (x == y) return false; // there is a loop
+            if (x == y)
+                return false; // there is a loop, the two nodes connected by the edge are already connected.
 
             // union
             parent[x] = y;
         }
 
-        // test connected
-        return edges.length == n - 1;
+        return true;
     }
 
-    private int find(int[] parent, int v) {
-        if (parent[v] == -1) return v;
+    private int find(int[] parent, int i) {
+        if (parent[i] == i)
+            return i;
 
-        // optional path compression, flatten tall tree:
-        // https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
-        if (parent[parent[v]] != -1) parent[v] = parent[parent[v]];
-
-        return find(parent, parent[v]);
+        parent[i] = find(parent, parent[i]);
+        return parent[i];
     }
 }
 
-// DFS, adjacency list to test no loop and connected
-public class Solution {
-    // connected but no circle, edges = n - 1
+
+// DFS, check no of edges and no cycle for each node
+class Solution {
     public boolean validTree(int n, int[][] edges) {
+        if (edges.length != n - 1)
+            return false;
+
+        // and then check no cycle for each node
         List<List<Integer>> adjList = new ArrayList<>();
-        for (int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
             adjList.add(new ArrayList<>());
 
         // convert edge list to adjacency list
-        for(int[] e : edges) {
-            int u = e[0];
-            int v = e[1];
-            adjList.get(u).add(v);
-            adjList.get(v).add(u);
+        for (int[] e : edges) {
+            adjList.get(e[0]).add(e[1]);
+            adjList.get(e[1]).add(e[0]);
         }
 
         boolean[] visited = new boolean[n];
 
-        // has no local cycle starting from 0
-        if (hasCycle(adjList, visited, 0, -1))  return false;
-
-        // make sure connected AND no global cycle
-        for(boolean b : visited) {
-            if (!b) return false;
+        // detect circles
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                if (hasCycle(adjList, visited, i, -1))
+                    return false;
+            }
         }
 
         return true;
-
-        // return edges.length == n-1; // this won't work for local DFS
-        /*
-            Input:
-                4
-                [[2,3],[1,2],[1,3]]
-                Output:
-                true
-                Expected:
-                false
-        */
     }
 
     private boolean hasCycle(List<List<Integer>> adjList, boolean[] visited, int u, int parent) {
         visited[u] = true;
 
         for (int v : adjList.get(u)) {
-            if ((visited[v] && v != parent) ||
-                (!visited[v] && hasCycle(adjList, visited, v, u)))
+            if (v == parent)
+                continue;
+            if (visited[v])
+                return true;
+            if (hasCycle(adjList, visited, v, u))
                 return true;
         }
 
+        return false;
+    }
+}
+
+// similar to above but use int[] visited array: 0 unvisted, 1 visiting, 2 visited.
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        if (edges.length != n - 1)
+            return false;
+
+        // and then check no cycle for each node
+        List<List<Integer>> adjList = new ArrayList<>();
+        for (int i = 0; i < n; i++)
+            adjList.add(new ArrayList<>());
+
+        // convert edge list to adjacency list
+        for (int[] e : edges) {
+            adjList.get(e[0]).add(e[1]);
+            adjList.get(e[1]).add(e[0]);
+        }
+
+        int[] visited = new int[n];
+
+        // detect circles
+        for (int i = 0; i < n; i++) {
+            if (visited[i] == 0) {
+                if (hasCycle(adjList, visited, i, -1))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean hasCycle(List<List<Integer>> adjList, int[] visited, int u, int parent) {
+        visited[u] = 1;
+
+        for (int v : adjList.get(u)) {
+            if (v == parent)
+                continue;
+            if (visited[v] == 1)
+                return true;
+            if (visited[v] == 0 && hasCycle(adjList, visited, v, u))
+                return true;
+        }
+
+        visited[u] = 2;
         return false;
     }
 }

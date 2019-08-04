@@ -7,7 +7,7 @@ public class Solution {
             adj.get(edge[0]).add(edge[1]);
         }
 
-        int[] visited = new int[numCourses]; // init to all 0, 1 visiting, 2 visited
+        int[] visited = new int[numCourses]; // init to all 0 unvisited, 1 visiting, 2 visited
         Stack<Integer> st = new Stack<>(); // for topological sort, or just use list queue w/o flipping afterwards
 
         for(int i=0; i<numCourses; i++) {

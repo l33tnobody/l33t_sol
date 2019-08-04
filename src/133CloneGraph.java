@@ -32,7 +32,6 @@ public class Solution {
 }
 
 // Iterative BFS solution:
-
 public class Solution {
     // from label to the cloned node
     private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
@@ -40,6 +39,7 @@ public class Solution {
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node==null) return node;
 
+        // the queue is used to add neighbors to the copied nodes from the origin nodes
         UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
         map.put(node.label, newNode);
         LinkedList<UndirectedGraphNode> q = new LinkedList<>();

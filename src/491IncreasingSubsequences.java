@@ -1,3 +1,4 @@
+// recursive
 class Solution {
     public List<List<Integer>> findSubsequences(int[] nums) {
         List<Integer> running = new ArrayList<>();
@@ -10,22 +11,23 @@ class Solution {
 
     private void recurFind(List<List<Integer>> res, List<Integer> running, int j, int[] nums) {
         int len = running.size();
-        if (len >= 2) res.add(new ArrayList<>(running));
+        if (len >= 2)
+            res.add(new ArrayList<>(running));
 
         Set<Integer> used = new HashSet<>();
 
-        for (int i=j; i<nums.length; i++) {
-            if(used.contains(nums[i]) || (len > 0 && running.get(len-1) > nums[i])) continue;
+        for (int i = j; i < nums.length; i++) {
+            if (used.contains(nums[i]) || (len > 0 && running.get(len - 1) > nums[i]))
+                continue;
             used.add(nums[i]);
             running.add(nums[i]);
-            recurFind(res, running, i+1, nums);
+            recurFind(res, running, i + 1, nums);
             running.remove(len);
         }
     }
 }
 
-
-// interative, just for reference:
+// interative
 class Solution {
     public List<List<Integer>> findSubsequences(int[] nums) {
         Set<List<Integer>> res = new HashSet<>(); // to deduplicate
@@ -52,3 +54,4 @@ class Solution {
         return reslist;
     }
 }
+

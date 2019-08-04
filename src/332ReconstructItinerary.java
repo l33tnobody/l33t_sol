@@ -1,3 +1,4 @@
+// actually asking for Topological sort based on from to and lex order
 public class Solution {
     public List<String> findItinerary(String[][] tickets) {
         Map<String, PriorityQueue<String>> adj = new HashMap<>();
@@ -14,7 +15,7 @@ public class Solution {
 
     private void dfs(Map<String, PriorityQueue<String>> adj, List<String> res, String from) {
         PriorityQueue<String> q = adj.get(from);
-        while(q != null && !q.isEmpty()) { // equivalent to if
+        while(q != null && !q.isEmpty()) {
             dfs(adj, res, q.poll());
         }
         res.add(0, from);

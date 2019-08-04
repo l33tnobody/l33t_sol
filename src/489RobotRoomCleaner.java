@@ -1,3 +1,6 @@
+// the key to the solution of this question is:
+// through dfs, at the end,
+// recover (assume robot goes back to) the same cell and facing the same way
 /**
  * // This is the robot's control interface.
  * // You should not implement it, or speculate about its implementation
@@ -17,22 +20,22 @@
  */
 class Solution {
     final int[][] directions = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-    
+
     public void cleanRoom(Robot robot) {
         Set<String> visited = new HashSet<>();
         dfs(robot, visited, 0, 0, 0);
     }
-    
+
     private void dfs(Robot robot, Set<String> visited, int curDirection, int row, int col) {
         visited.add(row + "," + col);
         robot.clean();
-        
+
         for(int i = 0; i < 4; i++) {
             int direction = (curDirection + i) % 4;
             int[] next = directions[direction];
             int nextRow = row + next[0];
             int nextCol = col + next[1];
-            
+
             if(!visited.contains(nextRow + "," + nextCol) && robot.move()) {
                 dfs(robot, visited, direction, nextRow, nextCol);
                 // recover the initial state here, best part:

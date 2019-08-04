@@ -38,7 +38,7 @@ public class Solution {
     }
 }
 
-// using graph
+// using graph. check indegree one node at a time
 public class Solution {
     public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
         Map<Integer, Set<Integer>> adj = new HashMap<>();
@@ -72,7 +72,6 @@ public class Solution {
             int u = org[i];
             if(!indegree.containsKey(u) || indegree.get(u) != 0) return false;
 
-            if(i == org.length - 1) continue;
             // remove u from graph
             for(int v : adj.get(u)) {
                 int d = indegree.get(v) - 1;
