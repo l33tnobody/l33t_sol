@@ -3,8 +3,8 @@
 //     we either see if it can be appended to a previously constructed consecutive sequence
 //     or if it can be the start of a new consecutive sequence.
 //     If neither are true, then we return false.
-
 // note the array is sorted ascendingly
+// Time O(n)
 class Solution {
     public boolean isPossible(int[] nums) {
         Map<Integer, Integer> freq = new HashMap<>(), appendfreq = new HashMap<>();

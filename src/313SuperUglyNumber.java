@@ -19,31 +19,9 @@ public class Solution {
     }
 }
 
-// with optimization on multiply, remember val
-public class Solution {
-    public int nthSuperUglyNumber(int n, int[] primes) {
-        int[] ugly = new int[n];
-        int[] idx = new int[primes.length];
-        int[] val = new int[primes.length];
-        Arrays.fill(val, 1);
-
-        for (int i = 0; i < n; i++) {
-            //find next
-            ugly[i] = Integer.MAX_VALUE;
-            for (int j = 0; j < primes.length; j++)
-                ugly[i] = Math.min(ugly[i], val[j]);
-
-            for (int j = 0; j < primes.length; j++) {
-                if (val[j] == ugly[i]) { val[j] = ugly[idx[j]++] * primes[j]; }
-            }
-        }
-
-        return ugly[n - 1];
-    }
-}
 
 
-// with optimization
+// with optimization, remember next value for each prime i.e. cache the multiplication
 public class Solution {
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] ugly = new int[n];

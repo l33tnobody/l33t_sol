@@ -1,3 +1,4 @@
+// sort on ending and compare next starting and move limit to next ending...
 public class Solution {
     public int findMinArrowShots(int[][] points) {
         if (points == null || points.length == 0) return 0;
@@ -8,6 +9,8 @@ public class Solution {
                 return a[1] - b[1];
             }
         });
+        // sort only on ending is enough:
+        // Arrays.sort(points, (a,b) -> a[1] - b[1]);
 
         int limit = points[0][1];
         int count = 1;

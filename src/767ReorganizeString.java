@@ -1,7 +1,7 @@
 class Solution {
     public String reorganizeString(String S) { // essentailly the same as rearrange string k distance apart, where k = 2
         int[] count = new int[26];
-        int[] valid = new int[26]; // next valid index to guarantee k distance apart
+        int[] valid = new int[26]; // next valid index to guarantee k distance apart, has to use the char at an index >= valid
         for(int i=0; i<S.length(); i++) {
             count[S.charAt(i) - 'a']++;
         }

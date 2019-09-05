@@ -1,3 +1,5 @@
+// insertion sort:
+
 class Solution {
     public int[][] reconstructQueue(int[][] people) {
         Arrays.sort(people, new Comparator<int[]>() { // nlogn

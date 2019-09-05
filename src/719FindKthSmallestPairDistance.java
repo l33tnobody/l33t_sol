@@ -41,7 +41,7 @@ class Solution {
 
     // find the index of the higher key: the least key that has its value stricly greater than key.
     private int higherKey(int[] nums, int l, int h, int key) {
-        if(nums[h] <= key) return h + 1; // imaginary higher key, have to have this line here otherwise will return h
+        if(nums[h] <= key) return h + 1; // imaginary higher key, have to have this line here otherwise will return h, or just set h always to be nums.length
         while(l < h) {
             int m = l + (h - l) / 2;
             if(nums[m] <= key) l = m+1;

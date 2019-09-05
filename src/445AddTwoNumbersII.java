@@ -1,8 +1,3 @@
-// or pad the shorter linkedlist in the front
-// to make it the same size as the long one
-/**
- * singly-linked list.
- */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Stack<Integer> s1 = new Stack<>();
@@ -17,7 +12,7 @@ class Solution {
         }
 
         int carry = 0;
-        ListNode prev = null;
+        ListNode prev = null; // head
         while(!s1.isEmpty() || !s2.isEmpty() || carry != 0) {
             int v1 = s1.isEmpty() ? 0 : s1.pop();
             int v2 = s2.isEmpty() ? 0 : s2.pop();

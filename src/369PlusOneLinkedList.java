@@ -1,4 +1,5 @@
 // recursion and general plus number
+// OR just use a stack of ListNode (push original listnode in, no need for new ones)
 class Solution {
     public ListNode plusOne(ListNode head) {
         int carry = recur(head, 1);
@@ -26,6 +27,8 @@ class Solution {
         return 0;
     }
 }
+
+
 
 // or another solution based on the special +1, and find the last non 9 number
 // and use a dummy head

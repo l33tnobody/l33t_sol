@@ -28,6 +28,46 @@ public class Solution {
     }
 }
 
+// based on heap nlogn time, O(n) space
+// or after getting all the frequency, use a min heap on the frequency of size
+// k: time (n+k)logk, space n+k
+public class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n : nums) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+
+        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<>(
+                (a, b) -> (b.getValue() - a.getValue()));
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            maxHeap.add(entry);
+        }
+
+        List<Integer> res = new ArrayList<>();
+        while (res.size() < k) {
+            res.add(maxHeap.poll().getKey());
+        }
+        return res;
+
+        // better: min heap
+        // PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) ->
+        // a.getValue()-b.getValue());
+        // for(Map.Entry<Integer, Integer> entry : counterMap.entrySet()) {
+        // pq.offer(entry);
+        // if(pq.size() > k) pq.poll();
+        // }
+
+        // List<Integer> res = new LinkedList<>();
+        // while(!pq.isEmpty()) {
+        // res.add(0, pq.poll().getKey());
+        // }
+        // return res;
+    }
+}
+
+
+
 // k quick select based: O(n) time and space
 public class Solution {
     public List<Integer> topKFrequent(int[] nums, int k) {
@@ -84,42 +124,5 @@ public class Solution {
         Map.Entry<Integer, Integer> tmp = list.get(i);
         list.set(i, list.get(j));
         list.set(j, tmp);
-    }
-}
-
-
-// based on heap nlogn time, O(n) space
-// or after getting all the frequency, use a min heap on the frequency of size k: time (n+k)logk, space n+k
-public class Solution {
-    public List<Integer> topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int n : nums) {
-            map.put(n, map.getOrDefault(n,0)+1);
-        }
-
-        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap =
-            new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
-        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
-            maxHeap.add(entry);
-        }
-
-        List<Integer> res = new ArrayList<>();
-        while(res.size()<k){
-            res.add(maxHeap.poll().getKey());
-        }
-        return res;
-
-        // better: min heap
-        // PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) -> a.getValue()-b.getValue());
-        // for(Map.Entry<Integer, Integer> entry : counterMap.entrySet()) {
-        //     pq.offer(entry);
-        //     if(pq.size() > k) pq.poll();
-        // }
-        
-        // List<Integer> res = new LinkedList<>();
-        // while(!pq.isEmpty()) {
-        //     res.add(0, pq.poll().getKey());
-        // }
-        // return res;
     }
 }

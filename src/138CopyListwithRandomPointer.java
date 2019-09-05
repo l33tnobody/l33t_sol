@@ -10,27 +10,29 @@
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         Map<RandomListNode, RandomListNode> map = new HashMap<>();
-        
+
         RandomListNode ptr = head;
         while(ptr != null) { // make copy and find mapping
             RandomListNode copy = new RandomListNode(ptr.label);
             map.put(ptr, copy);
             ptr = ptr.next;
         }
-        
+
         ptr = head;
         while(ptr != null) {
             RandomListNode copy = map.get(ptr);
-            copy.next = map.get(ptr.next); // ptr.next == null ? null : map.get(ptr.next); 
+            copy.next = map.get(ptr.next); // ptr.next == null ? null : map.get(ptr.next);
             copy.random = map.get(ptr.random); // ptr.random == null ? null : map.get(ptr.random);
             ptr = ptr.next;
         }
-        
+
         return map.get(head); // map.get(null) returns null
     }
 }
 
 // O(1) additional space except from the result
+// put corresponding copy after each node, copy random ptr first with next copy mapping
+// then copy the next pointer and disassemble the two linkedlist
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         RandomListNode ptr = head;
@@ -40,7 +42,7 @@ public class Solution {
             ptr.next = copy;
             ptr = ptr.next.next;
         }
-        
+
         //assign random pointer according to mapping
         ptr = head;
         while(ptr != null) {
@@ -48,7 +50,7 @@ public class Solution {
             copy.random = ptr.random == null ? null : ptr.random.next;
             ptr = ptr.next.next;
         }
-        
+
         RandomListNode copyhead = head == null? null : head.next;
         ptr = head;
         while(ptr != null) {
@@ -57,7 +59,7 @@ public class Solution {
             ptr.next = next;
             ptr = ptr.next;
         }
-        
+
         return copyhead;
     }
 }
