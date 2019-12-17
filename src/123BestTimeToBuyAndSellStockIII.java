@@ -1,4 +1,4 @@
-/// essentially:
+// essentially:
 public class Solution {
     public int maxProfit(int[] prices) {
         int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
@@ -13,6 +13,9 @@ public class Solution {
         return sell2; // release2 will always >= release1, reason see above
     }
 }
+
+
+
 
 
 // no, dont look at this solution, not generic enough

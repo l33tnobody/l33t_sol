@@ -1,28 +1,3 @@
-// using hashmap to dedup:
-class Solution {
-    public int[] intersection(int[] nums1, int[] nums2) {
-        Map<Integer, Boolean> map = new HashMap<>();
-        List<Integer> res = new ArrayList<>();
-
-        for(int n : nums1) {
-            map.put(n, false); // also dedup nums1 and get ready to dedup intersection with nums2
-        }
-
-        for(int n : nums2) {
-            if(map.get(n) != null && map.get(n) == false) {
-                res.add(n);
-                map.put(n, true);
-            }
-        }
-
-        int[] resarr = new int[res.size()];
-        for(int i=0; i<res.size(); i++) {
-            resarr[i] = res.get(i);
-        }
-        return resarr;
-    }
-}
-
 // hashset: O(n)
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
@@ -107,5 +82,33 @@ public class Solution {
             }
         }
         return false;
+    }
+}
+
+
+
+
+// using hashmap to dedup:
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Map<Integer, Boolean> map = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+
+        for (int n : nums1) {
+            map.put(n, false); // also dedup nums1 and get ready to dedup intersection with nums2
+        }
+
+        for (int n : nums2) {
+            if (map.get(n) != null && map.get(n) == false) {
+                res.add(n);
+                map.put(n, true);
+            }
+        }
+
+        int[] resarr = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            resarr[i] = res.get(i);
+        }
+        return resarr;
     }
 }

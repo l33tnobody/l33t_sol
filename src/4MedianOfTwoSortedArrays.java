@@ -8,7 +8,7 @@
     2) max(left_part) <= min(right_part)
 
     Binary Searching i in [0, m], to find an object `i` that:
-    B[j-1] <= A[i] and A[i-1] <= B[j], ( where j = (m + n + 1)/2 - i )
+    B[j-1] <= A[i] and A[i-1] <= B[j], ( where j = (m + n)/2 - i )
 */
 
 /*

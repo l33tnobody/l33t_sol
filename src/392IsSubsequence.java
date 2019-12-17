@@ -16,6 +16,7 @@ class Solution {
 
 // or can do preprocessing of t and some sort of binary search to reduce runtime for follow up
 // https://leetcode.com/problems/is-subsequence/discuss/87268/Java-code-for-the-follow-up-question
+// each match after preprocessing will be s.len * log(t.len) vs. t.len (which will be exponentially larger)
 class Solution {
     public boolean isSubsequence(String s, String t) {
         Map<Character, List<Integer>> map = new HashMap<>(); //<character, index>

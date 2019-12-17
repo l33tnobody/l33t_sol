@@ -3,7 +3,7 @@ class Solution {
     public int lengthOfLongestSubstring(String s) {
         int start=0, end=0, maxlen=0;
         Map<Character, Integer> map = new HashMap<>(); // from char to the last appearing index
-        
+
         for(; end < s.length(); end++) {
             char c = s.charAt(end);
             if(map.containsKey(c)) {
@@ -12,32 +12,29 @@ class Solution {
             map.put(c, end);
             maxlen = Math.max(maxlen, end - start + 1);
         }
-        
+
         return maxlen;
     }
 }
 
-public class Solution {
+class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int i=0, j=0, maxlen=0;
-        Map<Character, Boolean> exist = new HashMap<>(); // can use of array of some size
+        int start = 0, end = 0, res = 0;
+        Set<Character> set = new HashSet<>();
 
-        while(j<s.length()) {
-            if(exist.containsKey(s.charAt(j)) && exist.get(s.charAt(j)) == true) {
-                maxlen = Math.max(maxlen, j-i);
-                while(s.charAt(i) != s.charAt(j)) {
-                    exist.put(s.charAt(i), false); // or delete the key from hashmap
-                    i++;
+        for (; end < s.length(); end++) {
+            char c = s.charAt(end);
+            if (set.contains(c)) {
+                while (s.charAt(start) != c) {
+                    set.remove(s.charAt(start));
+                    start++;
                 }
-                i++;
-                j++;
-            } else {
-                exist.put(s.charAt(j), true);
-                j++;
+                start++;
             }
+            set.add(c);
+            res = Math.max(res, end - start + 1);
         }
-        maxlen = Math.max(maxlen, s.length()-i);
 
-        return maxlen;
+        return res;
     }
 }

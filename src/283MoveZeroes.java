@@ -1,3 +1,28 @@
+// slow and fast pointers, swap:
+public class Solution {
+    public void moveZeroes(int[] nums) {
+        int slow = 0;
+        int fast = 0;
+
+        while (fast < nums.length) {
+            if (nums[fast] != 0) {
+                swap(slow, fast, nums);
+                slow++;
+            }
+            fast++;
+        }
+    }
+
+    private void swap(int slow, int fast, int[] nums) {
+        if (slow == fast)
+            return;
+
+        int temp = nums[slow];
+        nums[slow] = nums[fast];
+        nums[fast] = temp;
+    }
+}
+
 // slow and fast pointers, assign:
 public class Solution {
     public void moveZeroes(int[] nums) {
@@ -17,29 +42,5 @@ public class Solution {
             nums[slow]=0;
             slow++;
         }
-    }
-}
-
-// slow and fast pointers, swap:
-public class Solution {
-    public void moveZeroes(int[] nums) {
-        int slow=0;
-        int fast=0;
-
-        while(fast<nums.length){
-            if(nums[fast]!=0){
-                swap(slow,fast,nums);
-                slow++;
-            }
-            fast++;
-        }
-    }
-
-    private void swap(int slow, int fast, int[] nums){
-        if (slow==fast) return;
-
-        int temp=nums[slow];
-        nums[slow] = nums[fast];
-        nums[fast] = temp;
     }
 }

@@ -19,7 +19,16 @@ public class Solution {
             secondHalf = reverseList(slow.next);
         }
 
-        // secondHalf shorter by 1 or equal to the first half length
+        // // 2nd half is one less node (when even number of nodes) or same (when odd number of nodes) number of nodes
+        // ListNode secondHalf = reverseList(slow);
+        // while (secondHalf != null) {
+        //     if (head.val != secondHalf.val)
+        //         return false;
+        //     head = head.next;
+        //     secondHalf = secondHalf.next;
+        // }
+
+        // secondHalf shorter by 1 (odd total number of nodes) or equal (even total number) to the first half length
         while (secondHalf != null) {
             if (head.val != secondHalf.val)
                 return false;

@@ -1,29 +1,3 @@
-class Solution {
-    public int leastInterval(char[] tasks, int n) { // an O(n) Math solution
-        int[] counter = new int[26];
-        int max=0;
-        int maxCount=0;
-
-        for(char t : tasks) {
-            int c = ++counter[t-'A'];
-            if(c == max) {
-                maxCount++;
-            } else if(c > max) {
-                max = c;
-                maxCount = 1;
-            }
-        }
-
-        int partCount = max - 1;
-        int partLength = n - (maxCount - 1);
-        int emptySlots = partLength * partCount;
-        int availableTasks = tasks.length - max*maxCount;
-        int idles = Math.max(0, emptySlots - availableTasks);
-
-        return tasks.length + idles;
-    }
-}
-
 // or reuse arrange String k distance apart
 class Solution {
     public int leastInterval(char[] tasks, int n) {
@@ -37,7 +11,7 @@ class Solution {
         for(int i=0, j=0; i<tasks.length; i++, j++) { // j is the current index in the result array, while i is the index for tasks
             int charpos = findValidMax(count, valid, j);
             if(charpos == -1) {
-                sb.append("_");
+                sb.append("_"); // idle
                 i--; // still looking at putting ith task
             } else {
                 count[charpos]--;
@@ -60,5 +34,32 @@ class Solution {
             }
         }
         return charpos;
+    }
+}
+
+// an O(n) Math solution
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] counter = new int[26];
+        int max = 0;
+        int maxCount = 0;
+
+        for (char t : tasks) {
+            int c = ++counter[t - 'A'];
+            if (c == max) {
+                maxCount++;
+            } else if (c > max) {
+                max = c;
+                maxCount = 1;
+            }
+        }
+
+        int partCount = max - 1;
+        int partLength = n - (maxCount - 1);
+        int emptySlots = partLength * partCount;
+        int availableTasks = tasks.length - max * maxCount;
+        int idles = Math.max(0, emptySlots - availableTasks);
+
+        return tasks.length + idles;
     }
 }

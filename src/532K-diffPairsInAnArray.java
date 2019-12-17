@@ -22,14 +22,27 @@ class Solution {
 
 
 // an O(nlogn) solution just for fun:
-public int findPairs(int[] nums, int k) {
-    int ans = 0;
-    Arrays.sort(nums); //O(nlogn)
-    for (int i = 0, j = 0; i < nums.length; i++) {
-        // O(n) amortized totally: j will not decrease
-        for (j = Math.max(j, i + 1); j < nums.length && (long) nums[j] - nums[i] < k; j++) ;
-        if (j < nums.length && (long) nums[j] - nums[i] == k) ans++;
-        while (i + 1 < nums.length && nums[i] == nums[i + 1]) i++;
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        Arrays.sort(nums);
+        int i = 0, j = 1, res = 0;
+
+        while (i < nums.length - 1 && j < nums.length) {
+            if (i >= j)
+                j = i + 1;
+
+            if ((long) nums[j] - nums[i] < k) {
+                j++;
+            } else if ((long) nums[j] - nums[i] > k) {
+                i++;
+            } else {
+                res++;
+                i++;
+                while (i < nums.length - 1 && nums[i] == nums[i - 1])
+                    i++;
+            }
+        }
+
+        return res;
     }
-    return ans;
 }

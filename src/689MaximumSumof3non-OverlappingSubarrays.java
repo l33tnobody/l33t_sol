@@ -13,7 +13,7 @@ class Solution {
         for(int i=1; i<=3; i++) {
             int j = k - 1 + (i-1)*k;
             dp[i][j] = accu[j+1] - accu[j+1-k];
-            if(j - k >= 0) dp[i][j] += dp[i-1][j-k];
+            if(j - k >= 0) dp[i][j] += dp[i-1][j-k]; // equivalent to i > 1
             id[i][j] = j - k + 1;
             j++;
 

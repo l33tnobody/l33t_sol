@@ -1,9 +1,10 @@
 // We iterate through the array once to get the frequency of all the elements in the array
 // We iterate through the array once more and for each element,
-//     we either see if it can be appended to a previously constructed consecutive sequence
+//     we either see if it can be appended to a previously constructed consecutive sequence (higher priority)
 //     or if it can be the start of a new consecutive sequence.
 //     If neither are true, then we return false.
-// note the array is sorted ascendingly
+// note the array is sorted ascendingly (has to be sorted ascendingly, because we only expand to right side increasingly for all the consecutive sequences)
+//      and the constructed sequence must be 3 to begin with, to ensure they are legitimate and does not require to be checked again for length.
 // Time O(n)
 class Solution {
     public boolean isPossible(int[] nums) {

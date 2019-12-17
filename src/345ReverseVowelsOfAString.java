@@ -6,8 +6,8 @@ class Solution {
         int len = s.length();
         int l = 0, r = len - 1;
         while(true) {
-            while(l<len && !vowels.contains(s.charAt(l))) l++;
-            while(r>=0 && !vowels.contains(s.charAt(r))) r--;
+            while(l<len && !vowels.contains(strarr[l])) l++;
+            while(r>=0 && !vowels.contains(strarr[r])) r--;
 
             if(l>=r) break;
 

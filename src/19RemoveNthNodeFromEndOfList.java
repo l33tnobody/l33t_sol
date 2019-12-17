@@ -1,3 +1,4 @@
+// be aware of the case where the head might be deleted. (hint: use a dummy head)
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null) return null;

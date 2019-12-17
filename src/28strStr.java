@@ -1,18 +1,6 @@
 public class Solution {
     public int strStr(String haystack, String needle) {
-        for(int i=0; ; i++) {
-            for(int j=0; ; j++) {
-                if (j == needle.length()) return i;
-                if (i + j == haystack.length()) return -1;
-                if (needle.charAt(j) != haystack.charAt(i+j)) break;
-            }
-        }
-    }
-}
-
-public class Solution {
-    public int strStr(String haystack, String needle) {
-        if (haystack.length() < needle.length()) return -1;
+        // if (haystack.length() < needle.length()) return -1; // not needed
 
         for(int i=0; i<haystack.length() - needle.length() + 1; i++) {
             int j=0;
@@ -27,7 +15,7 @@ public class Solution {
     }
 }
 
-// KMP just for fun
+// KMP just for fun, see geeksforgeeks
 public class Solution {
     public int strStr(String haystack, String needle) {
         if (needle.equals("")) return 0;
