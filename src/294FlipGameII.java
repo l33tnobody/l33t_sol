@@ -21,7 +21,7 @@ public class Solution {
         for(int i=0; i<s.length() - 1; i++) {
             if(s.charAt(i) == '+' && s.charAt(i + 1) == '+') {
                 String derived = s.substring(0, i) + "--" + s.substring(i + 2);
-                if (!canWin(derived)) return true;
+                if (!canWin(derived)) return true; // better to cache here as well: map.put(s, true);
             }
         }
 

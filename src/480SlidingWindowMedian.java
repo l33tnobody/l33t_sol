@@ -61,7 +61,7 @@ public class Solution {
                 bigSize++;
             }
             if(bigSize>0){
-                while(small.firstKey()>big.firstKey()){
+                while(small.firstKey()>big.firstKey()){ // equivalent to if
                     add(big, remove(small, small.firstKey()));
                     add(small, remove(big, big.firstKey()));
                 }
